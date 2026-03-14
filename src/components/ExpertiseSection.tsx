@@ -1,31 +1,31 @@
 import { motion } from 'framer-motion';
-import { PenTool, ActivitySquare, Video, Globe } from 'lucide-react';
+import { Code, Database, Server, Cpu } from 'lucide-react';
 import './ExpertiseSection.css';
 
 const expertiseData = [
   {
     id: '01',
-    title: 'Brand Identity',
-    description: 'Memorable, versatile logo design and visual systems for modern businesses looking to stand out.',
-    icon: <PenTool size={32} />
+    title: 'Frontend Architecture',
+    description: 'Building responsive, highly optimized SPA structures using React, Next.js, and modern state management tools.',
+    icon: <Code size={32} />
   },
   {
     id: '02',
-    title: 'IoT & Health Tech UI',
-    description: 'Intuitive dashboards and interfaces for smart devices, wearables, and complex analytical tools.',
-    icon: <ActivitySquare size={32} />
+    title: 'Backend Systems',
+    description: 'Architecting scalable server-side logic and microservices with Node.js, Express, and high-performance routing.',
+    icon: <Server size={32} />
   },
   {
     id: '03',
-    title: 'Product Animation',
-    description: 'Dynamic, detailed cinematic sequences for footwear, tech hardware, and e-commerce platforms.',
-    icon: <Video size={32} />
+    title: 'Database Design',
+    description: 'Designing normalized schemas, complex aggregations, and performance-tuned data pipelines using SQL and NoSQL databases.',
+    icon: <Database size={32} />
   },
   {
     id: '04',
-    title: 'Web Systems',
-    description: 'Streamlined, robust interfaces for booking, reservation platforms, and internal business tools.',
-    icon: <Globe size={32} />
+    title: 'DevOps & CI/CD',
+    description: 'Streamlining deployment pipelines with Docker, automated testing, and cloud infrastructure management for robust reliability.',
+    icon: <Cpu size={32} />
   }
 ];
 
@@ -59,8 +59,8 @@ const ExpertiseSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="section-title">Core <span className="highlight">Expertise</span></h2>
-          <p className="section-subtitle">A comprehensive suite of design disciplines tailored for the future.</p>
+          <h2 className="section-title">Skills & <span className="highlight">Tech Stack</span></h2>
+          <p className="section-subtitle">A comprehensive suite of programming disciplines tailored for highly scalable solutions.</p>
         </motion.div>
 
         <motion.div 

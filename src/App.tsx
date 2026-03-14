@@ -8,8 +8,7 @@ import HeroParallax from './components/HeroParallax';
 import AboutSection from './components/AboutSection';
 import ExpertiseSection from './components/ExpertiseSection';
 import CaseStudies from './components/CaseStudies';
-import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
+import ExperienceSection from './components/ExperienceSection';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 
@@ -21,7 +20,7 @@ function App() {
       autoRaf: true,
       duration: 1.2,
     });
-    
+
     return () => {
       lenis.destroy();
     };
@@ -41,14 +40,13 @@ function App() {
         style={{ pointerEvents: isLoaded ? 'auto' : 'none' }}
       >
         <HeroParallax totalFrames={144} />
-        
+
         {/* All subsequent sections */}
         <div className="content-under-hero" style={{ zIndex: 10, position: 'relative', backgroundColor: 'var(--bg-primary)' }}>
           <AboutSection />
           <ExpertiseSection />
           <CaseStudies />
-          <Testimonials />
-          <FAQ />
+          <ExperienceSection />
           <CTA />
           <Footer />
         </div>

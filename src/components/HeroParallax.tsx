@@ -131,7 +131,7 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <span contentEditable suppressContentEditableWarning>Kramik</span><br />
-            <span contentEditable suppressContentEditableWarning>Design Portfolio</span>
+            <span contentEditable suppressContentEditableWarning>Software Engineer</span>
           </motion.h1>
 
           <motion.div
@@ -142,19 +142,19 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
           >
             <div className="skill-item">
               <span className="skill-index">#01</span>
-              <span className="skill-label">Brand & Logo Identity</span>
+              <span className="skill-label">Full-Stack Development</span>
             </div>
             <div className="skill-item">
               <span className="skill-index">#02</span>
-              <span className="skill-label">IoT UI/UX Design</span>
+              <span className="skill-label">Frontend Architecture</span>
             </div>
             <div className="skill-item">
               <span className="skill-index">#03</span>
-              <span className="skill-label">Web Systems & Dashboards</span>
+              <span className="skill-label">API Integration & Backend</span>
             </div>
             <div className="skill-item">
               <span className="skill-index">#04</span>
-              <span className="skill-label">Product Photography & Animation</span>
+              <span className="skill-label">Performance Optimization</span>
             </div>
           </motion.div>
         </motion.div>
@@ -169,9 +169,9 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <h2 className="subheadline">Crafting Intuitive Digital Experiences & Brand Identities.</h2>
+            <h2 className="subheadline">Building Scalable Web Applications & Interactive Experiences.</h2>
             <p className="supporting-paragraph">
-              Specializing in comprehensive design solutions—from striking logos and smart system interfaces to cinematic product animations that bring ideas to life.
+              Specializing in full-stack development—from robust backend architectures and API integrations to highly performant, accessible, and pixel-perfect frontend interfaces.
             </p>
           </motion.div>
         </motion.div>
@@ -192,11 +192,11 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
           style={{ y: midScrollY, opacity: midScrollOpacity }}
         >
           <h2 className="mid-headline">
-            Merging logic <br />
-            with <span className="highlight">emotion.</span>
+            Writing code <br />
+            with <span className="highlight">purpose.</span>
           </h2>
           <p className="mid-description">
-            I believe that the best interfaces don't just solve problems—they tell a story and leave a lasting impression. From the very first wireframe to the final deployment.
+            I believe that great software isn't just about elegant code—it's about creating robust, scalable solutions that solve real-world problems. From the first system architecture draft to production deployment.
           </p>
         </motion.div>
 
@@ -206,11 +206,11 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
           style={{ y: midScrollY, opacity: midScrollOpacity }}
         >
           <h2 className="mid-headline">
-            Pixel perfect <br />
+            Performant <br />
             to the <span className="highlight">core.</span>
           </h2>
           <p className="mid-description">
-            Every animation, interaction, and visual detail is meticulously crafted. Ensuring performance and aesthetics work together in perfect harmony.
+            Every component, database query, and API endpoint is meticulously optimized. Ensuring speed, security, and scalability work together in perfect harmony.
           </p>
         </motion.div>
 

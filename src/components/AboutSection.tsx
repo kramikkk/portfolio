@@ -28,13 +28,13 @@ const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h2 className="section-title">
-              Bridging the Gap Between <span className="highlight">Design</span> and <span className="highlight">Technology</span>
+              Bridging the Gap Between <span className="highlight">Creative Vision</span> and <span className="highlight">Technical Execution</span>
             </h2>
             <p className="about-description">
-              My creative mission is to fuse aesthetics with functionality, delivering digital experiences that are not only visually stunning but intuitively robust. With a multidisciplinary approach spanning brand identity, complex IoT interfaces, and comprehensive web systems, I build products that speak for themselves.
+              My mission is to build digital products that are not just highly functional, but exceptionally fast and scalable. With a strong foundation in full-stack architecture, I specialize in crafting robust web applications using React, Node.js, and modern cloud infrastructure.
             </p>
             <p className="about-description">
-              Every detail matters—from the micro-animations that surprise and delight users, to the thoughtful architecture that ensures seamless navigation. I specialize in turning complex technological challenges into elegant design solutions.
+              Whether integrating complex REST APIs or optimizing frontend rendering performance, every line of code matters. I focus on clean architecture, DRY principles, and seamless continuous delivery to ensure the software I build can scale efficiently over time.
             </p>
             
             <div className="about-stats">
