@@ -1,91 +1,90 @@
-import { motion } from 'framer-motion';
-import { Code, Database, Server, Cpu } from 'lucide-react';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import './ExpertiseSection.css';
 
-const expertiseData = [
-  {
-    id: '01',
-    title: 'Frontend Architecture',
-    description: 'Building responsive, highly optimized SPA structures using React, Next.js, and modern state management tools.',
-    icon: <Code size={32} />
-  },
-  {
-    id: '02',
-    title: 'Backend Systems',
-    description: 'Architecting scalable server-side logic and microservices with Node.js, Express, and high-performance routing.',
-    icon: <Server size={32} />
-  },
-  {
-    id: '03',
-    title: 'Database Design',
-    description: 'Designing normalized schemas, complex aggregations, and performance-tuned data pipelines using SQL and NoSQL databases.',
-    icon: <Database size={32} />
-  },
-  {
-    id: '04',
-    title: 'DevOps & CI/CD',
-    description: 'Streamlining deployment pipelines with Docker, automated testing, and cloud infrastructure management for robust reliability.',
-    icon: <Cpu size={32} />
-  }
+const row1 = [
+  { name: 'Next.js', slug: 'nextdotjs', color: 'white' },
+  { name: 'TypeScript', slug: 'typescript', color: '#3178C6' },
+  { name: 'React', slug: 'react', color: '#61DAFB' },
+  { name: 'Tailwind CSS', slug: 'tailwindcss', color: '#06B6D4' },
+  { name: 'Vite', slug: 'vite', color: '#646CFF' },
+  { name: 'JavaScript', slug: 'javascript', color: '#F7DF1E' },
+  { name: 'HTML5', slug: 'html5', color: '#E34F26' },
+  { name: 'CSS3', slug: 'css3', color: '#1572B6' },
+  { name: 'Vercel', slug: 'vercel', color: 'white' },
+  { name: 'Render', slug: 'render', color: '#46E3B7' },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 }
-  }
-};
+const row2 = [
+  { name: 'PostgreSQL', slug: 'postgresql', color: '#4169E1' },
+  { name: 'Supabase', slug: 'supabase', color: '#3ECF8E' },
+  { name: 'SQLite', slug: 'sqlite', color: '#003B57' },
+  { name: 'NeonDB', slug: 'neon', color: '#00E599' },
+  { name: 'Python', slug: 'python', color: '#3776AB' },
+  { name: 'Kotlin', slug: 'kotlin', color: '#7F52FF' },
+  { name: 'Arduino', slug: 'arduino', color: '#00979D' },
+  { name: 'ESP32', slug: 'espressif', color: '#E7352C' },
+  { name: 'Git', slug: 'git', color: '#F05032' },
+  { name: 'GitHub', slug: 'github', color: 'white' },
+];
 
 const ExpertiseSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  // Helper to render the infinite scrolling track
+  const renderMarquee = (items: typeof row1, reverse: boolean = false) => {
+    // Duplicate the array to create a seamless looping effect
+    const doubledItems = [...items, ...items];
+    
+    return (
+      <div className={`marquee-track ${reverse ? 'reverse' : ''}`}>
+        {doubledItems.map((item, idx) => (
+          <div className="tech-card" key={`${item.name}-${idx}`}>
+            <img 
+              src={`https://cdn.simpleicons.org/${item.slug}/${item.color.replace('#', '')}`} 
+              alt={item.name} 
+              className="tech-icon"
+              loading="lazy"
+            />
+            <span className="tech-name">{item.name}</span>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
-    <section className="expertise-section section-padding" id="expertise">
-      <div className="container">
+    <section className="expertise-section section-padding" id="expertise" ref={containerRef}>
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <motion.div 
           className="section-header center"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">Skills & <span className="highlight">Tech Stack</span></h2>
-          <p className="section-subtitle">A comprehensive suite of programming disciplines tailored for highly scalable solutions.</p>
-        </motion.div>
-
-        <motion.div 
-          className="expertise-grid"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {expertiseData.map((item) => (
-            <motion.div 
-              className="expertise-card" 
-              key={item.id}
-              variants={itemVariants}
-            >
-              <div className="card-header">
-                <span className="card-index">#{item.id}</span>
-                <div className="card-icon">{item.icon}</div>
-              </div>
-              <h3 className="card-title">{item.title}</h3>
-              <p className="card-description">{item.description}</p>
-            </motion.div>
-          ))}
+          <p className="section-subtitle">A robust arsenal of modern frameworks, databases, and tooling.</p>
         </motion.div>
       </div>
+
+      <motion.div 
+        className="marquee-container"
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <div className="marquee-wrapper">
+          {renderMarquee(row1, false)}
+        </div>
+        <div className="marquee-wrapper mt-4">
+          {renderMarquee(row2, true)}
+        </div>
+        
+        {/* Gradient fades for the edges of the screen */}
+        <div className="fade-left"></div>
+        <div className="fade-right"></div>
+      </motion.div>
     </section>
   );
 };

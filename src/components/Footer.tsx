@@ -14,7 +14,7 @@ const Footer = () => {
               Creating intuitive digital experiences, striking brand identities, and cinematic product animations.
             </p>
           </div>
-          
+
           <div className="footer-links-group">
             <h4 className="footer-heading">Navigation</h4>
             <ul className="footer-links">
@@ -24,7 +24,7 @@ const Footer = () => {
               <li><a href="#faq">FAQ</a></li>
             </ul>
           </div>
-          
+
           <div className="footer-links-group">
             <h4 className="footer-heading">Connect</h4>
             <ul className="footer-links">
@@ -35,7 +35,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="footer-bottom">
           <div className="copyright">
             &copy; {new Date().getFullYear()} Kramik. All rights reserved.

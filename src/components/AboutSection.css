@@ -21,36 +21,18 @@
   border: 1px solid var(--border-color);
 }
 
-.about-image-placeholder {
+.about-image-container {
   width: 100%;
   height: 100%;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.abstract-shape {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(40px);
-  opacity: 0.5;
-}
-
-.shape-1 {
-  width: 200px;
-  height: 200px;
-  background-color: var(--accent-color);
-  top: 20%;
-  left: 20%;
-}
-
-.shape-2 {
-  width: 250px;
-  height: 250px;
-  background-color: var(--bg-secondary);
-  bottom: 10%;
-  right: 10%;
+.about-profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 20px;
 }
 
 .section-title {
