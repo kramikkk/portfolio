@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
-import { Twitter, Instagram, Linkedin, Dribbble } from 'lucide-react';
+import { Youtube, Instagram, Linkedin, Github, Download } from 'lucide-react';
 import './Navbar.css';
 
 const navLinks = [
@@ -121,23 +121,45 @@ const Navbar = () => {
                 href="#"
                 className="logo"
                 onClick={closeMenu}
-                animate={isOpen ? { color: "var(--accent-color)" } : { color: "#ffffff" }}
+                initial="initial"
+                whileHover="hover"
+                animate={isOpen ? "open" : "initial"}
                 transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] as [number, number, number, number] }}
               >
-                Kramik<motion.span
+                <motion.span
+                  variants={{
+                    initial: { color: "#ffffff" },
+                    hover: { color: "var(--accent-color)" },
+                    open: { color: "var(--accent-color)" }
+                  }}
+                >
+                  Kramik
+                </motion.span>
+                <motion.span
                   className="dot"
-                  animate={isOpen ? { color: "#ffffff", display: "inline-block", x: 4 } : { color: "var(--accent-color)", display: "inline-block", x: 0 }}
-                  transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] as [number, number, number, number] }}
-                >.</motion.span>
+                  variants={{
+                    initial: { color: "var(--accent-color)", x: 0 },
+                    hover: { color: "#ffffff", x: 4 },
+                    open: { color: "#ffffff", x: 4 }
+                  }}
+                >
+                  .
+                </motion.span>
               </motion.a>
             </div>
 
-            <button className="menu-toggle" onClick={toggleMenu}>
+            <motion.button 
+              className="menu-toggle" 
+              onClick={toggleMenu}
+              animate={{ color: isOpen ? "var(--accent-color)" : "#ffffff" }}
+              whileHover={{ color: "var(--accent-color)" }}
+              transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] as [number, number, number, number] }}
+            >
               <div className={`menu-text ${isOpen ? 'is-open' : ''}`}>
                 <span className="text-open">Menu</span>
                 <span className="text-close">Close</span>
               </div>
-            </button>
+            </motion.button>
           </div>
         </div>
       </motion.header>
@@ -170,7 +192,10 @@ const Navbar = () => {
                             onClick={closeMenu}
                           >
                             <span className="menu-link-num">0{i + 1}</span>
-                            {link.title}
+                            <div className="menu-link-text-wrapper">
+                              <span className="menu-link-text-original">{link.title}</span>
+                              <span className="menu-link-text-copy">{link.title}</span>
+                            </div>
                           </motion.a>
                         </div>
                       </li>
@@ -182,11 +207,18 @@ const Navbar = () => {
                   <motion.div className="menu-socials" variants={fadeVariants}>
                     <span>Socials</span>
                     <div className="social-links">
-                      <a href="#"><Twitter size={20} /></a>
-                      <a href="#"><Instagram size={20} /></a>
-                      <a href="#"><Linkedin size={20} /></a>
-                      <a href="#"><Dribbble size={20} /></a>
+                      <a href="https://github.com/kramikkk" target="_blank" rel="noopener noreferrer"><Github size={20} /></a>
+                      <a href="https://www.linkedin.com/in/kramikkk/" target="_blank" rel="noopener noreferrer"><Linkedin size={20} /></a>
+                      <a href="https://www.instagram.com/kramik_/" target="_blank" rel="noopener noreferrer"><Instagram size={20} /></a>
+                      <a href="https://www.youtube.com/@kramik-code" target="_blank" rel="noopener noreferrer"><Youtube size={20} /></a>
                     </div>
+                  </motion.div>
+
+                  <motion.div className="menu-resume" variants={fadeVariants}>
+                    <span>Resume</span>
+                    <a href="/Resume-links.pdf" download className="resume-download-link">
+                      Download CV <Download size={18} />
+                    </a>
                   </motion.div>
 
                   <motion.div className="menu-contact" variants={fadeVariants}>

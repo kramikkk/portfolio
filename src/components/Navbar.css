@@ -47,7 +47,6 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #fff;
   font-family: var(--font-sans);
   font-size: 1.125rem;
   font-weight: 500;
@@ -160,6 +159,26 @@
   text-transform: uppercase;
   transition: color 0.4s ease;
   position: relative;
+  overflow: visible;
+}
+
+.menu-link-text-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+.menu-link-text-original,
+.menu-link-text-copy {
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.menu-link-text-copy {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: var(--accent-color);
 }
 
 .menu-link-num {
@@ -172,12 +191,19 @@
 }
 
 .menu-link-item a:hover {
-  color: var(--accent-color);
-  transform: translateX(20px);
+  transform: translateX(30px) skewX(-5deg);
+}
+
+.menu-link-item a:hover .menu-link-text-original {
+  transform: translateY(-100%);
+}
+
+.menu-link-item a:hover .menu-link-text-copy {
+  transform: translateY(-100%);
 }
 
 .menu-link-item a {
-  transition: color 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Menu Footer */
@@ -195,6 +221,7 @@
 }
 
 .menu-socials span,
+.menu-resume span,
 .menu-contact span {
   display: block;
   margin-bottom: 1rem;
@@ -204,6 +231,23 @@
 .social-links {
   display: flex;
   gap: 1.5rem;
+}
+
+.resume-download-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.resume-download-link:hover {
+  color: var(--accent-color);
+  transform: translateY(-2px);
 }
 
 .social-links a {

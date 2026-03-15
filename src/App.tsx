@@ -8,7 +8,6 @@ import HeroParallax from './components/HeroParallax';
 import ExpertiseSection from './components/ExpertiseSection';
 import CaseStudies from './components/CaseStudies';
 import ExperienceSection from './components/ExperienceSection';
-import CTA from './components/CTA';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 
@@ -49,7 +48,6 @@ function App() {
           <ExpertiseSection />
           <CaseStudies />
           <ExperienceSection />
-          <CTA />
           <Footer />
         </div>
       </motion.main>

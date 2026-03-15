@@ -249,7 +249,7 @@
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .skill-category-card:nth-child(2n) {
     border-right: none;
   }

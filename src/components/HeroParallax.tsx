@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Linkedin, Dribbble, Instagram } from 'lucide-react';
+import { Linkedin, Github, Instagram } from 'lucide-react';
 import { useMotionValue, animate } from 'framer-motion';
 import './HeroParallax.css';
 
@@ -250,9 +250,9 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
           </div>
 
           <div className="bottom-socials">
-            <a href="#" className="social-icon"><Linkedin size={20} /></a>
-            <a href="#" className="social-icon"><Dribbble size={20} /></a>
-            <a href="#" className="social-icon"><Instagram size={20} /></a>
+            <a href="https://www.linkedin.com/in/kramikkk/" target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={20} /></a>
+            <a href="https://github.com/kramikkk" target="_blank" rel="noopener noreferrer" className="social-icon"><Github size={20} /></a>
+            <a href="https://www.instagram.com/kramik_/" target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={20} /></a>
           </div>
         </motion.div>
 
@@ -304,7 +304,7 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
               <div className="about-badge">ABOUT ME</div>
               <h2 className="about-hero-title">Mark Jeric B. <span className="highlight">Exconde</span></h2>
               <p className="about-hero-body">
-                Computer Engineering student and aspiring software engineer focused on building highly functional, fast, and scalable digital products. I specialize in full-stack architecture and clean code.
+                I’m a 22-year-old Computer Engineering student at Laguna State Polytechnic University - San Pablo City Campus who is currently living in Tiaong Quezon, Philippines.
               </p>
 
               <div className="about-hero-stats">

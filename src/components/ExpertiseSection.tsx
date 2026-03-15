@@ -99,7 +99,6 @@ const ExpertiseSection = () => {
         >
           <div className="about-badge">MY ARSENAL</div>
           <h2 className="section-title">Skills & <span className="highlight">Tech Stack</span></h2>
-          <p className="section-subtitle">A robust collection of modern frameworks, databases, and tooling.</p>
         </motion.div>
       </div>
 

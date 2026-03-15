@@ -102,22 +102,23 @@ h6 {
 }
 
 .section-title {
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  font-weight: 700;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 800;
   color: #fff;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
 }
 
 @media (min-width: 1440px) {
   .section-title {
-    font-size: 3rem;
+    font-size: 5rem;
   }
 }
 
 @media (min-width: 1920px) {
   .section-title {
-    font-size: 3.5rem;
+    font-size: 6rem;
   }
 }
 
@@ -154,8 +155,8 @@ h6 {
   }
 
   .section-title {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .section-subtitle {
@@ -184,6 +185,6 @@ h6 {
   }
 
   .section-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
