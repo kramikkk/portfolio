@@ -93,7 +93,7 @@ const CaseStudies = () => {
     <section ref={containerRef} className="case-studies" id="work">
       <div className="horizontal-sticky-wrapper">
         <div className="container" style={{ position: 'absolute', top: '6%', left: 0, right: 0, zIndex: 10 }}>
-          <div className="horizontal-header">
+          <div className="horizontal-header section-header right">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -102,7 +102,23 @@ const CaseStudies = () => {
             >
               <div className="about-badge">SELECTED WORK</div>
               <h2 className="section-title">Featured <span className="highlight">Projects</span></h2>
-              <p className="section-subtitle" style={{ maxWidth: '400px' }}>A curated selection of my most impactful digital products, from full-stack platforms to embedded systems.</p>
+              <p className="section-subtitle">A curated selection of my most impactful digital products, from full-stack platforms to embedded systems.</p>
+              
+              {/* Pagination Dots */}
+              <div className="project-pagination">
+                {projects.map((_, index) => {
+                  const start = index / projects.length;
+                  const end = (index + 1) / projects.length;
+                  
+                  return (
+                    <ProjectPaginationDot
+                      key={index}
+                      progress={scrollYProgress}
+                      range={[start, end]}
+                    />
+                  );
+                })}
+              </div>
             </motion.div>
           </div>
         </div>
@@ -168,6 +184,29 @@ const CaseStudies = () => {
         </motion.div>
       </div>
     </section>
+  );
+};
+
+// Sub-component for individual dots to keep main component clean
+const ProjectPaginationDot = ({ progress, range }: { progress: any, range: [number, number] }) => {
+  const width = useTransform(progress, range, ["8px", "32px"], { clamp: true });
+  const opacity = useTransform(progress, range, [0.3, 1], { clamp: true });
+  const backgroundColor = useTransform(
+    progress,
+    range,
+    ["rgba(255, 255, 255, 0.3)", "var(--accent-color)"],
+    { clamp: true }
+  );
+
+  return (
+    <motion.div
+      className="pagination-dot"
+      style={{
+        width,
+        opacity,
+        backgroundColor
+      }}
+    />
   );
 };
 

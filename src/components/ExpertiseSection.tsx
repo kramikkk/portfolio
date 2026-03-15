@@ -28,6 +28,29 @@ const row2 = [
   { name: 'GitHub', slug: 'github', color: 'white' },
 ];
 
+const skillCategories = [
+  {
+    index: '01',
+    title: 'Frontend Development',
+    skills: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Jetpack Compose']
+  },
+  {
+    index: '02',
+    title: 'Backend & Data',
+    skills: ['Node.js', 'Python', 'PostgreSQL', 'Supabase', 'SQL', 'WebSockets']
+  },
+  {
+    index: '03',
+    title: 'IoT & Robotics',
+    skills: ['C++', 'Arduino', 'ESP32', 'Sensor Fusion', 'TinyML', 'Hardware Design']
+  },
+  {
+    index: '04',
+    title: 'Intelligence & Tools',
+    skills: ['Google GenAI', 'Git/GitHub', 'Docker', 'Vercel', 'Linux', 'Computer Vision']
+  }
+];
+
 const ExpertiseSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
@@ -40,12 +63,9 @@ const ExpertiseSection = () => {
     stiffness: 400
   });
 
-  // Transform velocity into a skew amount (max 10 degrees)
   const skewVelocity = useTransform(smoothVelocity, [-1000, 1000], [-10, 10]);
 
-  // Helper to render the infinite scrolling track
   const renderMarquee = (items: typeof row1, reverse: boolean = false) => {
-    // Duplicate the array to create a seamless looping effect
     const doubledItems = [...items, ...items];
 
     return (
@@ -72,7 +92,7 @@ const ExpertiseSection = () => {
     <section className="expertise-section section-padding" id="expertise" ref={containerRef}>
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <motion.div
-          className="section-header right"
+          className="section-header"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -96,10 +116,33 @@ const ExpertiseSection = () => {
           {renderMarquee(row2, true)}
         </div>
 
-        {/* Gradient fades for the edges of the screen */}
         <div className="fade-left"></div>
         <div className="fade-right"></div>
       </motion.div>
+
+      <div className="container expertise-content">
+        <div className="skills-grid">
+          {skillCategories.map((category, idx) => (
+            <motion.div
+              key={category.title}
+              className="skill-category-card"
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+              transition={{ duration: 0.6, delay: 0.4 + (idx * 0.1), ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="category-header">
+                <span className="category-index">{category.index}</span>
+                <h3 className="category-title">{category.title}</h3>
+              </div>
+              <div className="category-skills-list">
+                {category.skills.map(skill => (
+                  <span key={skill} className="skill-item-small">{skill}</span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };
