@@ -1,11 +1,11 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FileText, ArrowRight } from 'lucide-react';
+import { FileText, Mail } from 'lucide-react';
 import './CTA.css';
 
 const CTA = () => {
   const containerRef = useRef<HTMLElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "center center"]
@@ -36,8 +36,8 @@ const CTA = () => {
 
           <div className="cta-buttons">
             <a href="mailto:mrkjrc.xcnd@gmail.com" className="btn btn-primary" style={{ textDecoration: 'none' }}>
-              <span>Email Me</span>
-              <ArrowRight size={20} />
+              <span>Send Email</span>
+              <Mail size={20} />
             </a>
             <a href="/Resume-links.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ textDecoration: 'none' }}>
               <FileText size={20} />
