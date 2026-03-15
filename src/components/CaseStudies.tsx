@@ -82,7 +82,7 @@ const CaseStudies = () => {
     <section ref={containerRef} className="case-studies" id="work">
       <div className="horizontal-sticky-wrapper">
         <div className="horizontal-header container">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -98,16 +98,16 @@ const CaseStudies = () => {
             <div key={project.id} className="horizontal-project-card">
               <div className="project-card-inner">
                 <div className="project-index">0{index + 1}</div>
-                
+
                 <div className="project-image-wrapper">
-                  <motion.div 
+                  <motion.div
                     className="image-reveal-mask"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
+                    <img
+                      src={project.image}
+                      alt={project.title}
                       className="project-image-horizontal"
                     />
                   </motion.div>
@@ -120,12 +120,12 @@ const CaseStudies = () => {
                       {project.tech.map(t => <span key={t}>{t}</span>)}
                     </div>
                   </div>
-                  
+
                   <h3 className="project-title-huge">{project.title}</h3>
                   <p className="project-description-large">{project.description}</p>
-                  
-                  <motion.a 
-                    href="#" 
+
+                  <motion.a
+                    href="#"
                     className="view-project-link"
                     whileHover={{ x: 10 }}
                   >

@@ -78,3 +78,37 @@ h1, h2, h3, h4, h5, h6 {
 .highlight {
   color: var(--accent-color);
 }
+
+.about-badge {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-bottom: 2rem;
+  background: rgba(255, 85, 0, 0.05);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-header.center {
+  text-align: center;
+}
+
