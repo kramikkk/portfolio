@@ -130,8 +130,8 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <span contentEditable suppressContentEditableWarning>Kramik</span><br />
-            <span contentEditable suppressContentEditableWarning>Software Engineer</span>
+            <span>Kramik</span><br />
+            <span>Website Developer</span>
           </motion.h1>
 
           <motion.div
@@ -169,7 +169,7 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <h2 className="subheadline">Building Scalable Web Applications & Interactive Experiences.</h2>
+            <h2 className="subheadline"><span className='highlight' >Engr.</span> Mark Jeric B. Exconde</h2>
             <p className="supporting-paragraph">
               Specializing in full-stack development—from robust backend architectures and API integrations to highly performant, accessible, and pixel-perfect frontend interfaces.
             </p>
