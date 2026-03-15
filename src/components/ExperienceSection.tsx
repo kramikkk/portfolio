@@ -7,7 +7,7 @@ const experienceData = [
   {
     id: 1,
     role: 'Junior Web Developer Intern (OJT)',
-    company: 'WebMakerPH',
+    company: 'RGRR WebMaker Philippines',
     period: '2026 - Present',
     description: 'Technical lead for BookNGo project.',
   }
@@ -17,23 +17,23 @@ const educationData = [
   {
     id: 1,
     degree: 'Bachelor of Science in Computer Engineering',
-    institution: 'LSPU SPCC',
+    institution: 'Laguna State Polytechnic University - San Pablo City Campus',
     period: '2022 - Present',
     description: 'Core focus on software engineering, hardware architecture, and full-stack development.',
   }
 ];
 
 // A separate component for each column to track its Scroll Progress for the line drawing
-const TimelineColumn = ({ 
-  title, 
-  icon: Icon, 
-  data, 
-  delay = 0 
-}: { 
-  title: string, 
-  icon: React.ElementType, 
+const TimelineColumn = ({
+  title,
+  icon: Icon,
+  data,
+  delay = 0
+}: {
+  title: string,
+  icon: React.ElementType,
   data: any[],
-  delay?: number 
+  delay?: number
 }) => {
   const columnRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -59,7 +59,7 @@ const TimelineColumn = ({
       <div className="timeline-items">
         {/* Animated Line Background */}
         <div className="timeline-line-base"></div>
-        <motion.div 
+        <motion.div
           className="timeline-line-active"
           style={{ scaleY: pathLength }}
         />
@@ -74,14 +74,14 @@ const TimelineColumn = ({
             transition={{ duration: 0.6, delay: delay + (index * 0.15), ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Animated Dot synced to card reveal */}
-            <motion.div 
+            <motion.div
               className="timeline-dot"
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.4, delay: delay + (index * 0.15) + 0.2 }}
             />
-            
+
             <div className="timeline-period">
               <Calendar size={14} />
               <span>{item.period}</span>
@@ -101,17 +101,17 @@ const ExperienceSection = () => {
     <section className="experience-section section-padding" id="experience">
       <div className="container">
         <div className="experience-grid">
-          <TimelineColumn 
-            title="Experience" 
-            icon={Briefcase} 
-            data={experienceData} 
-            delay={0} 
+          <TimelineColumn
+            title="Experience"
+            icon={Briefcase}
+            data={experienceData}
+            delay={0}
           />
-          <TimelineColumn 
-            title="Education" 
-            icon={GraduationCap} 
-            data={educationData} 
-            delay={0.2} 
+          <TimelineColumn
+            title="Education"
+            icon={GraduationCap}
+            data={educationData}
+            delay={0.2}
           />
         </div>
       </div>

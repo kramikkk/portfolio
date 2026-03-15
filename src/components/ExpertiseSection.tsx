@@ -72,12 +72,12 @@ const ExpertiseSection = () => {
     <section className="expertise-section section-padding" id="expertise" ref={containerRef}>
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <motion.div
-          className="section-header center"
+          className="section-header right"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="about-badge" style={{ margin: "0 auto 2rem" }}>MY ARSENAL</div>
+          <div className="about-badge">MY ARSENAL</div>
           <h2 className="section-title">Skills & <span className="highlight">Tech Stack</span></h2>
           <p className="section-subtitle">A robust collection of modern frameworks, databases, and tooling.</p>
         </motion.div>
