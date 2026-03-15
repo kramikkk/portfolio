@@ -49,7 +49,7 @@
 .project-index {
   position: absolute;
   top: -10%;
-  left: -2%;
+  right: -2%;
   font-size: 15vw;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.03);
@@ -229,5 +229,92 @@
 
   .project-title-huge {
     font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .case-studies {
+    height: 1000vh;
+  }
+
+  .projects-horizontal-track {
+    height: 80vh;
+    padding-left: 4%;
+    gap: 8vw;
+  }
+
+  .horizontal-project-card {
+    width: 85vw;
+  }
+
+  .project-card-inner {
+    gap: 1.5rem;
+  }
+
+  .project-index {
+    font-size: 25vw;
+    top: -5%;
+    opacity: 0.5;
+  }
+
+  .project-image-wrapper {
+    aspect-ratio: 16/10;
+    border-radius: 16px;
+  }
+
+  .project-title-huge {
+    font-size: 2rem;
+  }
+
+  .project-category-tag {
+    font-size: 0.75rem;
+  }
+
+  .project-description-large {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .project-tech-tags span {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .project-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .view-project-link,
+  .demo-project-link {
+    font-size: 0.95rem;
+  }
+
+  .horizontal-header {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .horizontal-project-card {
+    width: 90vw;
+  }
+
+  .project-title-huge {
+    font-size: 1.75rem;
+  }
+
+  .project-description-large {
+    font-size: 0.85rem;
+  }
+
+  .project-index {
+    display: none;
+  }
+
+  .project-image-wrapper {
+    border-radius: 12px;
   }
 }

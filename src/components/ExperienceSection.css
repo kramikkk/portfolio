@@ -164,4 +164,28 @@
     grid-template-columns: 1fr;
     gap: 4rem;
   }
+
+  .timeline-title {
+    font-size: 1.75rem;
+  }
+
+  .timeline-role {
+    font-size: 1.15rem;
+  }
+
+  .timeline-entity {
+    font-size: 0.95rem;
+  }
+
+  .timeline-description {
+    font-size: 0.9rem;
+  }
+
+  .timeline-card {
+    padding-left: 2rem;
+  }
+
+  .timeline-period {
+    font-size: 0.75rem;
+  }
 }

@@ -415,4 +415,124 @@
     flex-wrap: wrap;
     gap: 2rem;
   }
+
+  .left-block {
+    top: 15%;
+    left: 5%;
+    max-width: 85%;
+  }
+
+  .right-block {
+    top: auto;
+    bottom: 12%;
+    right: 5%;
+    left: 5%;
+    max-width: none;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .subheadline {
+    font-size: 1.2rem;
+  }
+
+  .supporting-paragraph {
+    font-size: 0.9rem;
+  }
+
+  .mid-block-left,
+  .mid-block-right {
+    left: 5%;
+    right: 5%;
+    max-width: 90%;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .mid-block-left {
+    top: 25%;
+  }
+
+  .mid-block-right {
+    top: 55%;
+  }
+
+  .mid-headline {
+    font-size: clamp(1.75rem, 7vw, 3rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .mid-description {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+
+  .hero-bottom-ui {
+    bottom: 1rem;
+    gap: 1rem;
+  }
+
+  .bottom-socials {
+    gap: 1rem;
+  }
+
+  .social-icon {
+    padding: 0.4rem;
+  }
+
+  .about-hero-title {
+    font-size: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  .about-hero-body {
+    font-size: 0.95rem;
+  }
+
+  .hero-stat-label {
+    font-size: 0.65rem;
+  }
+
+  .outline-text-hero {
+    font-size: 20vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    margin-bottom: 2rem;
+  }
+
+  .intro-line {
+    font-size: 0.8rem;
+  }
+
+  .skills-row {
+    gap: 0.5rem;
+  }
+
+  .skill-item {
+    font-size: 0.7rem;
+  }
+
+  .mid-headline {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+  }
+
+  .mid-description {
+    font-size: 0.85rem;
+  }
+
+  .about-hero-stats {
+    gap: 1.5rem;
+  }
+
+  .hero-stat-num {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+  }
+
+  .sticky-hero {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
 }

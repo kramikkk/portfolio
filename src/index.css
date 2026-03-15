@@ -147,3 +147,43 @@ h6 {
   margin-left: auto;
   margin-right: 0;
 }
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 4rem 0;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .about-badge {
+    font-size: 0.6rem;
+    padding: 0.4rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-header.right {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .section-header.right .section-subtitle {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-padding {
+    padding: 3rem 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
