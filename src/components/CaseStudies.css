@@ -1,6 +1,7 @@
 .case-studies {
   background-color: var(--bg-primary);
-  height: 900vh; /* Scroll length for horizontal movement (increased for 8 projects) */
+  height: 900vh;
+  /* Scroll length for horizontal movement (increased for 8 projects) */
   position: relative;
 }
 
@@ -14,20 +15,17 @@
   justify-content: center;
 }
 
-.horizontal-header {
-  position: absolute;
-  top: 10%;
-  left: 5%;
-  z-index: 10;
-}
+
 
 .projects-horizontal-track {
   display: flex;
   height: 70vh;
   padding-left: 5%;
-  gap: 12vw; /* Increased gap for better spacing */
+  gap: 12vw;
+  /* Increased gap for better spacing */
   align-items: center;
-  width: max-content; /* CRITICAL: Allow track to be as wide as all projects */
+  width: max-content;
+  /* CRITICAL: Allow track to be as wide as all projects */
   will-change: transform;
 }
 
@@ -45,7 +43,7 @@
   grid-template-columns: 1.2fr 1fr;
   gap: 4rem;
   width: 100%;
-  align-items: center;
+  align-items: center; /* Keep vertically centered relative to each other */
 }
 
 .project-index {
@@ -67,7 +65,7 @@
   border-radius: 24px;
   overflow: hidden;
   background: #111;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
 }
 
 .image-reveal-mask {
@@ -92,7 +90,10 @@
 .project-details-horizontal {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: clamp(0.75rem, 1.5vh, 1.25rem);
+  justify-content: center;
+  /* Ensure text doesn't flow too long vertically */
+  max-width: 600px;
 }
 
 .project-cat-row {
@@ -134,11 +135,38 @@
   letter-spacing: -0.04em;
 }
 
+@media (min-width: 1440px) {
+  .project-title-huge {
+    font-size: 4.5rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .project-title-huge {
+    font-size: 5.5rem;
+  }
+}
+
 .project-description-large {
   font-size: 1.2rem;
   line-height: 1.6;
   color: var(--text-secondary);
   max-width: 450px;
+  margin: 0;
+}
+
+@media (min-width: 1440px) {
+  .project-description-large {
+    font-size: 1.15rem;
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .project-description-large {
+    font-size: 1.25rem;
+    max-width: 550px;
+  }
 }
 
 .view-project-link {
@@ -160,16 +188,20 @@
   .projects-horizontal-track {
     gap: 5vw;
   }
+
   .horizontal-project-card {
     width: 90vw;
   }
+
   .project-card-inner {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
   .project-image-wrapper {
     aspect-ratio: 4/3;
   }
+
   .project-title-huge {
     font-size: 2.5rem;
   }

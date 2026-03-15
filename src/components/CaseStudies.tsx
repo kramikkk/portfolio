@@ -14,7 +14,7 @@ const projects = [
   },
   {
     id: 2,
-    title: 'Smart Shoe Care',
+    title: 'SSCM',
     category: 'IoT & AI Solution',
     description: 'An automated IoT solution for shoe cleaning, sterilization, and drying with Google GenAI material classification.',
     image: '/images/shoes.png',
@@ -38,7 +38,7 @@ const projects = [
   },
   {
     id: 5,
-    title: 'SLT Translate',
+    title: 'SLT App',
     category: 'Mobile App / ML',
     description: 'Accessibility-focused mobile app providing real-time Sign Language to Text and Text to Sign translation.',
     image: '/images/slt.png',
@@ -62,7 +62,7 @@ const projects = [
   },
   {
     id: 8,
-    title: 'Smart Face Shield',
+    title: 'SFS',
     category: 'Health Tech / IoT',
     description: 'Wearable health-tech device with non-contact infrared temperature scanning and ultrasonic proximity monitoring.',
     image: '/images/shield.png',
@@ -81,16 +81,19 @@ const CaseStudies = () => {
   return (
     <section ref={containerRef} className="case-studies" id="work">
       <div className="horizontal-sticky-wrapper">
-        <div className="horizontal-header container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="about-badge">SELECTED WORK</div>
-            <h2 className="section-title">Featured <span className="highlight">Projects</span></h2>
-          </motion.div>
+        <div className="container" style={{ position: 'absolute', top: '6%', left: 0, right: 0, zIndex: 10 }}>
+          <div className="horizontal-header">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="about-badge">SELECTED WORK</div>
+              <h2 className="section-title">Featured <span className="highlight">Projects</span></h2>
+              <p className="section-subtitle" style={{ maxWidth: '400px' }}>A curated selection of my most impactful digital products, from full-stack platforms to embedded systems.</p>
+            </motion.div>
+          </div>
         </div>
 
         <motion.div style={{ x }} className="projects-horizontal-track">
@@ -129,7 +132,7 @@ const CaseStudies = () => {
                     className="view-project-link"
                     whileHover={{ x: 10 }}
                   >
-                    Explore Case Study <ArrowUpRight size={24} />
+                    View Project <ArrowUpRight size={24} />
                   </motion.a>
                 </div>
               </div>
