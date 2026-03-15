@@ -4,7 +4,7 @@ import { Twitter, Instagram, Linkedin, Dribbble } from 'lucide-react';
 import './Navbar.css';
 
 const navLinks = [
-  { title: "About", href: "#about" },
+  { title: "Home", href: "#" },
   { title: "Expertise", href: "#expertise" },
   { title: "Work", href: "#work" },
   { title: "Experience", href: "#experience" },
@@ -150,6 +150,7 @@ const Navbar = () => {
             animate="open"
             exit="closed"
             variants={menuVariants}
+            data-lenis-prevent="true"
           >
             <div className="menu-background"></div>
             
