@@ -7,9 +7,9 @@ const experienceData = [
   {
     id: 1,
     role: 'Junior Web Developer Intern (OJT)',
-    company: 'RGRR WebMaker Philippines',
+    company: 'RGRR WebMaker Philippines - Lucena City',
     period: '2026 - Present',
-    description: 'Technical lead for BookNGo project.',
+    description: 'Technical Lead for BookNGo Project.',
   }
 ];
 
@@ -70,7 +70,7 @@ const TimelineColumn = ({
             key={item.id}
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.6, delay: delay + (index * 0.15), ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Animated Dot synced to card reveal */}
@@ -78,7 +78,7 @@ const TimelineColumn = ({
               className="timeline-dot"
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-20px" }}
               transition={{ duration: 0.4, delay: delay + (index * 0.15) + 0.2 }}
             />
 
