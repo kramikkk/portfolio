@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
-        <motion.div 
+        <motion.div
           className="footer-content"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -15,7 +15,7 @@ const Footer = () => {
         >
           <div className="footer-brand">
             <div className="footer-logo">
-              Mark Jeric<span className="dot">.</span>
+              Kramik<span className="dot">.</span>
             </div>
             <p className="footer-description">
               Creating intuitive digital experiences, striking brand identities, and cinematic product animations.
@@ -43,7 +43,7 @@ const Footer = () => {
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="footer-bottom"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
