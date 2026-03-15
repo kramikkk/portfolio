@@ -1,13 +1,13 @@
 :root {
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  
+
   --bg-primary: #0a0a0a;
   --bg-secondary: #121212;
   --text-primary: #ffffff;
   --text-secondary: #a3a3a3;
   --accent-color: #ff5500;
   --accent-glow: rgba(255, 85, 0, 0.4);
-  
+
   --border-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -44,7 +44,7 @@ button {
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1700px;
   margin: 0 auto;
   padding: 0 5%;
 }
@@ -57,19 +57,27 @@ button {
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--bg-secondary);
   border-radius: 5px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-color);
 }
 
 /* Base Headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -94,21 +102,48 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 2.5rem);
   font-weight: 700;
   color: #fff;
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
 }
 
+@media (min-width: 1440px) {
+  .section-title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .section-title {
+    font-size: 3.5rem;
+  }
+}
+
 .section-subtitle {
   font-size: 1.1rem;
   color: var(--text-secondary);
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .section-header.center {
   text-align: center;
 }
 
+.section-header.center .section-subtitle {
+  margin: 0 auto;
+}
+
+.section-header.right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.section-header.right .section-subtitle {
+  margin-left: auto;
+  margin-right: 0;
+}

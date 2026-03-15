@@ -5,8 +5,8 @@ import './Navbar.css';
 
 const navLinks = [
   { title: "Home", href: "#" },
-  { title: "Expertise", href: "#expertise" },
-  { title: "Work", href: "#work" },
+  { title: "Skills", href: "#expertise" },
+  { title: "Projects", href: "#work" },
   { title: "Experience", href: "#experience" },
   { title: "Contact", href: "#contact" }
 ];
@@ -19,7 +19,7 @@ const Navbar = () => {
   // Hide nav on scroll down, reveal on scroll up
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
-    
+
     // Auto-reveal if menu is open or at top of page
     if (isOpen || latest <= 100) {
       setHidden(false);
@@ -105,7 +105,7 @@ const Navbar = () => {
 
   return (
     <>
-      <motion.header 
+      <motion.header
         className="minimal-header"
         variants={{
           visible: { y: 0 },
@@ -117,21 +117,21 @@ const Navbar = () => {
         <div className="container">
           <div className="header-inner">
             <div className="logo-container">
-              <motion.a 
-                href="#" 
-                className="logo" 
+              <motion.a
+                href="#"
+                className="logo"
                 onClick={closeMenu}
                 animate={isOpen ? { color: "var(--accent-color)" } : { color: "#ffffff" }}
                 transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] as [number, number, number, number] }}
               >
-                Kramik<motion.span 
+                Kramik<motion.span
                   className="dot"
                   animate={isOpen ? { color: "#ffffff", display: "inline-block", x: 4 } : { color: "var(--accent-color)", display: "inline-block", x: 0 }}
                   transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] as [number, number, number, number] }}
                 >.</motion.span>
               </motion.a>
             </div>
-            
+
             <button className="menu-toggle" onClick={toggleMenu}>
               <div className={`menu-text ${isOpen ? 'is-open' : ''}`}>
                 <span className="text-open">Menu</span>
@@ -144,7 +144,7 @@ const Navbar = () => {
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             className="full-page-menu"
             initial="closed"
             animate="open"
@@ -153,19 +153,19 @@ const Navbar = () => {
             data-lenis-prevent="true"
           >
             <div className="menu-background"></div>
-            
+
             <div className="container menu-container">
               <div className="menu-content">
                 <nav className="menu-nav">
-                  <motion.ul 
+                  <motion.ul
                     className="menu-links"
                     variants={linkWrapperVariants}
                   >
                     {navLinks.map((link, i) => (
                       <li key={i} className="menu-link-item">
                         <div className="menu-link-overflow">
-                          <motion.a 
-                            href={link.href} 
+                          <motion.a
+                            href={link.href}
                             variants={linkItemVariants}
                             onClick={closeMenu}
                           >
@@ -188,7 +188,7 @@ const Navbar = () => {
                       <a href="#"><Dribbble size={20} /></a>
                     </div>
                   </motion.div>
-                  
+
                   <motion.div className="menu-contact" variants={fadeVariants}>
                     <span>Get in touch</span>
                     <a href="mailto:mrkjrc.xcnd@gmail.com" className="email-link">mrkjrc.xcnd@gmail.com</a>
