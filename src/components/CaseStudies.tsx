@@ -10,7 +10,9 @@ const projects = [
     category: 'Business Web Platform',
     description: 'Professional reservation system for small businesses, featuring complex scheduling logic and high-concurrency handling.',
     image: '/images/bookngo.png',
-    tech: ['TypeScript', 'React', 'Tailwind', 'Next.js']
+    tech: ['TypeScript', 'React', 'Tailwind', 'Next.js'],
+    demoUrl: '#',
+    projectUrl: 'https://github.com/kramikkk/book-n-go'
   },
   {
     id: 2,
@@ -18,7 +20,9 @@ const projects = [
     category: 'IoT & AI Solution',
     description: 'An automated IoT solution for shoe cleaning, sterilization, and drying with Google GenAI material classification.',
     image: '/images/shoes.png',
-    tech: ['Next.js', 'Google GenAI', 'ESP32', 'WebSockets']
+    tech: ['Next.js', 'Google GenAI', 'ESP32', 'WebSockets'],
+    demoUrl: '#',
+    projectUrl: 'https://github.com/kramikkk/smart-shoe-care-machine'
   },
   {
     id: 3,
@@ -26,7 +30,9 @@ const projects = [
     category: 'Health-Tech Platform',
     description: 'A full-stack wellness monitoring system featuring real-time telemetry from ESP32 sensors and Next.js analytics.',
     image: '/images/vitalink.png',
-    tech: ['React', 'Next.js', 'C++', 'Node.js']
+    tech: ['React', 'Next.js', 'C++', 'Node.js'],
+    demoUrl: 'https://vitalink-ai-frontend.vercel.app/',
+    projectUrl: 'https://github.com/kramikkk/vitalink-ai'
   },
   {
     id: 4,
@@ -34,15 +40,8 @@ const projects = [
     category: 'AI & Embedded System',
     description: 'Embedded vision system powered by TinyML for real-time object detection on ESP32-CAM with TFT display.',
     image: '/images/conan.png',
-    tech: ['C++', 'TinyML', 'ESP32-CAM', 'Computer Vision']
-  },
-  {
-    id: 5,
-    title: 'SLT App',
-    category: 'Mobile App / ML',
-    description: 'Accessibility-focused mobile app providing real-time Sign Language to Text and Text to Sign translation.',
-    image: '/images/slt.png',
-    tech: ['Kotlin', 'Android', 'TensorFlow', 'Jetpack Compose']
+    tech: ['C++', 'TinyML', 'ESP32-CAM', 'Computer Vision'],
+    projectUrl: 'https://github.com/kramikkk/conan-ai-cam'
   },
   {
     id: 6,
@@ -50,7 +49,8 @@ const projects = [
     category: 'IoT Game',
     description: 'Competitive two-player LED matrix game with custom joystick hardware and Arduino-based real-time logic.',
     image: '/images/stack.png',
-    tech: ['C++', 'Arduino', 'LED Matrix', 'Hardware Design']
+    tech: ['C++', 'Arduino', 'LED Matrix', 'Hardware Design'],
+    projectUrl: 'https://github.com/kramikkk/stack-wars'
   },
   {
     id: 7,
@@ -58,7 +58,17 @@ const projects = [
     category: 'Robotics',
     description: 'Autonomous smart robot featuring intelligent navigation, obstacle avoidance, and sensor-based environmental interaction.',
     image: '/images/robot.png',
-    tech: ['C++', 'Arduino', 'Robotics', 'Sensor Fusion']
+    tech: ['C++', 'Arduino', 'Robotics', 'Sensor Fusion'],
+    projectUrl: 'https://github.com/kramikkk/coco'
+  },
+  {
+    id: 5,
+    title: 'SLT App',
+    category: 'Mobile App / ML',
+    description: 'Accessibility-focused mobile app providing real-time Sign Language to Text and Text to Sign translation.',
+    image: '/images/slt.png',
+    tech: ['Kotlin', 'Android', 'TensorFlow', 'Jetpack Compose'],
+    projectUrl: 'https://github.com/kramikkk/slt-app'
   },
   {
     id: 8,
@@ -66,7 +76,8 @@ const projects = [
     category: 'Health Tech / IoT',
     description: 'Wearable health-tech device with non-contact infrared temperature scanning and ultrasonic proximity monitoring.',
     image: '/images/shield.png',
-    tech: ['Arduino', 'C++', 'IoT', 'Health Tech']
+    tech: ['Arduino', 'C++', 'IoT', 'Health Tech'],
+    projectUrl: 'https://github.com/kramikkk/smart-face-shield'
   }
 ];
 
@@ -127,13 +138,29 @@ const CaseStudies = () => {
                   <h3 className="project-title-huge">{project.title}</h3>
                   <p className="project-description-large">{project.description}</p>
 
-                  <motion.a
-                    href="#"
-                    className="view-project-link"
-                    whileHover={{ x: 10 }}
-                  >
-                    View Project <ArrowUpRight size={24} />
-                  </motion.a>
+                  <div className="project-actions">
+                    <motion.a
+                      href={(project as any).projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="view-project-link"
+                      whileHover={{ x: 10 }}
+                    >
+                      View Project <ArrowUpRight size={20} />
+                    </motion.a>
+
+                    {project.demoUrl && (
+                      <motion.a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="demo-project-link"
+                        whileHover={{ x: 10 }}
+                      >
+                        Live Demo <ArrowUpRight size={20} />
+                      </motion.a>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
