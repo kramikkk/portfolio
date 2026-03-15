@@ -92,18 +92,25 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
   }, [scrollYProgress, images, totalFrames]);
 
   // Parallax Text Scrolling Transforms
-  const leftTextY = useTransform(scrollYProgress, [0, 0.8], [0, -300]);
-  const leftTextOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+  // Segment 1: Initial Identity (0% - 25%)
+  const leftTextY = useTransform(scrollYProgress, [0, 0.25], [0, -200]);
+  const leftTextOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
-  const rightTextY = useTransform(scrollYProgress, [0, 0.8], [0, -450]);
-  const rightTextOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+  const rightTextY = useTransform(scrollYProgress, [0, 0.25], [0, -300]);
+  const rightTextOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
-  const bottomSocialsY = useTransform(scrollYProgress, [0, 0.5], [0, 150]);
-  const bottomSocialsOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const bottomSocialsY = useTransform(scrollYProgress, [0, 0.2], [0, 100]);
+  const bottomSocialsOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
-  // Mid-scroll content
-  const midScrollY = useTransform(scrollYProgress, [0.3, 0.8], [200, -100]);
-  const midScrollOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
+  // Segment 2: Philosophy / Mid-Blocks (25% - 55%)
+  const midScrollY = useTransform(scrollYProgress, [0.25, 0.55], [150, -150]);
+  const midScrollOpacity = useTransform(scrollYProgress, [0.25, 0.35, 0.45, 0.55], [0, 1, 1, 0]);
+
+  // Segment 3: About / Bio Integration (60% - 100%)
+  const aboutY = useTransform(scrollYProgress, [0.6, 0.95], [150, -50]);
+  const aboutOpacity = useTransform(scrollYProgress, [0.6, 0.75, 0.9, 1], [0, 1, 1, 1]);
+  const aboutBgTextX = useTransform(scrollYProgress, [0.6, 1], ["-10%", "5%"]);
+  const aboutBgTextXReverse = useTransform(scrollYProgress, [0.6, 1], ["10%", "-5%"]);
 
   return (
     <div className="hero-container" ref={containerRef}>
@@ -130,8 +137,8 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <span>Kramik</span><br />
-            <span>Website Developer</span>
+            <span>Mark</span><br />
+            <span>Jeric B. Exconde</span>
           </motion.h1>
 
           <motion.div
@@ -142,19 +149,19 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
           >
             <div className="skill-item">
               <span className="skill-index">#01</span>
-              <span className="skill-label">Full-Stack Development</span>
+              <span className="skill-label">Full-Stack Web Development</span>
             </div>
             <div className="skill-item">
               <span className="skill-index">#02</span>
-              <span className="skill-label">Frontend Architecture</span>
+              <span className="skill-label">Mobile Development</span>
             </div>
             <div className="skill-item">
               <span className="skill-index">#03</span>
-              <span className="skill-label">API Integration & Backend</span>
+              <span className="skill-label">Internet of Things</span>
             </div>
             <div className="skill-item">
               <span className="skill-index">#04</span>
-              <span className="skill-label">Performance Optimization</span>
+              <span className="skill-label">Embedded Systems</span>
             </div>
           </motion.div>
         </motion.div>
@@ -169,7 +176,7 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <h2 className="subheadline"><span className='highlight' >Engr.</span> Mark Jeric B. Exconde</h2>
+            <h2 className="subheadline"><span className='highlight' >CODENAME :</span> Kramik</h2>
             <p className="supporting-paragraph">
               Specializing in full-stack development—from robust backend architectures and API integrations to highly performant, accessible, and pixel-perfect frontend interfaces.
             </p>
@@ -212,6 +219,48 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
           <p className="mid-description">
             Every component, database query, and API endpoint is meticulously optimized. Ensuring speed, security, and scalability work together in perfect harmony.
           </p>
+        </motion.div>
+
+        {/* Segment 3: About Integration (The Finale) */}
+        <motion.div
+          className="hero-about-container"
+          id="about"
+          style={{ y: aboutY, opacity: aboutOpacity }}
+        >
+          {/* Upper Left background text */}
+          <motion.div className="about-bg-text-hero top-left-bg" style={{ x: aboutBgTextX }}>
+            <span className="outline-text-hero">KRAMIK</span>
+          </motion.div>
+
+          {/* Bottom Right background text (Mirrored) */}
+          <motion.div className="about-bg-text-hero bottom-right-bg" style={{ x: aboutBgTextXReverse }}>
+            <span className="outline-text-hero">KRAMIK</span>
+          </motion.div>
+
+          <div className="about-hero-center-content">
+            <div className="about-hero-text">
+              <div className="about-badge">ABOUT ME</div>
+              <h2 className="about-hero-title">Mark Jeric B. <span className="highlight">Exconde</span></h2>
+              <p className="about-hero-body">
+                Computer Engineering student and aspiring software engineer focused on building highly functional, fast, and scalable digital products. I specialize in full-stack architecture and clean code.
+              </p>
+
+              <div className="about-hero-stats">
+                <div className="hero-stat-item">
+                  <span className="hero-stat-num">2+</span>
+                  <span className="hero-stat-label">Months OJT</span>
+                </div>
+                <div className="hero-stat-item">
+                  <span className="hero-stat-num">8+</span>
+                  <span className="hero-stat-label">Live Projects</span>
+                </div>
+                <div className="hero-stat-item">
+                  <span className="hero-stat-num">3+</span>
+                  <span className="hero-stat-label">Awards</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
       </motion.div>

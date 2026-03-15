@@ -5,7 +5,6 @@ import 'lenis/dist/lenis.css';
 
 import Preloader from './components/Preloader';
 import HeroParallax from './components/HeroParallax';
-import AboutSection from './components/AboutSection';
 import ExpertiseSection from './components/ExpertiseSection';
 import CaseStudies from './components/CaseStudies';
 import ExperienceSection from './components/ExperienceSection';
@@ -47,7 +46,6 @@ function App() {
 
         {/* All subsequent sections */}
         <div className="content-under-hero" style={{ zIndex: 10, position: 'relative', backgroundColor: 'var(--bg-primary)' }}>
-          <AboutSection />
           <ExpertiseSection />
           <CaseStudies />
           <ExperienceSection />
