@@ -32,46 +32,60 @@
 .timeline-items {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
   position: relative;
+  /* Add padding bottom to ensure line reaches past last element */
+  padding-bottom: 2rem;
 }
 
-/* Timeline vertical line */
-.timeline-items::before {
+/* Base dark static line */
+.timeline-line-base {
   content: '';
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  width: 1px;
+  width: 2px;
   background: var(--border-color);
   z-index: 0;
 }
 
-.timeline-card {
-  position: relative;
-  padding-left: 2rem;
-  z-index: 1;
-}
-
-/* Timeline dot */
-.timeline-card::before {
+/* Active colored line drawn on top */
+.timeline-line-active {
   content: '';
   position: absolute;
-  top: 5px;
-  left: -4px;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background-color: var(--bg-secondary);
-  border: 2px solid var(--accent-color);
-  z-index: 2;
-  transition: all 0.3s ease;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--accent-color);
+  z-index: 1;
+  transform-origin: top;
+  will-change: transform;
 }
 
-.timeline-card:hover::before {
+.timeline-card {
+  position: relative;
+  padding-left: 2.5rem;
+  z-index: 2;
+}
+
+/* Explicit animated dot replaces ::before */
+.timeline-dot {
+  position: absolute;
+  top: 6px;
+  left: -5px; /* Adjust left to center 12px dot on 2px line */
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
   background-color: var(--accent-color);
-  box-shadow: 0 0 10px var(--accent-color);
+  box-shadow: 0 0 10px rgba(255, 85, 0, 0.5);
+  z-index: 3;
+}
+
+.timeline-card:hover .timeline-dot {
+  transform: scale(1.3) !important; /* Override inline style from framer */
+  box-shadow: 0 0 15px var(--accent-color);
 }
 
 .timeline-period {

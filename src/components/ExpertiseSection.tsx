@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useVelocity, useSpring, useTransform } from 'framer-motion';
 import './ExpertiseSection.css';
 
 const row1 = [
@@ -32,47 +32,62 @@ const ExpertiseSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
+  // Awwwards-style Scroll Velocity skew effect
+  const { scrollY } = useScroll();
+  const scrollVelocity = useVelocity(scrollY);
+  const smoothVelocity = useSpring(scrollVelocity, {
+    damping: 50,
+    stiffness: 400
+  });
+
+  // Transform velocity into a skew amount (max 10 degrees)
+  const skewVelocity = useTransform(smoothVelocity, [-1000, 1000], [-10, 10]);
+
   // Helper to render the infinite scrolling track
   const renderMarquee = (items: typeof row1, reverse: boolean = false) => {
     // Duplicate the array to create a seamless looping effect
     const doubledItems = [...items, ...items];
-    
+
     return (
-      <div className={`marquee-track ${reverse ? 'reverse' : ''}`}>
+      <motion.div
+        className={`marquee-track ${reverse ? 'reverse' : ''}`}
+        style={{ skewX: skewVelocity }}
+      >
         {doubledItems.map((item, idx) => (
           <div className="tech-card" key={`${item.name}-${idx}`}>
-            <img 
-              src={`https://cdn.simpleicons.org/${item.slug}/${item.color.replace('#', '')}`} 
-              alt={item.name} 
+            <img
+              src={`https://cdn.simpleicons.org/${item.slug}/${item.color.replace('#', '')}`}
+              alt={item.name}
               className="tech-icon"
               loading="lazy"
             />
             <span className="tech-name">{item.name}</span>
           </div>
         ))}
-      </div>
+      </motion.div>
     );
   };
 
   return (
     <section className="expertise-section section-padding" id="expertise" ref={containerRef}>
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        <motion.div 
+        <motion.div
           className="section-header center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
+          <div className="about-badge" style={{ margin: "0 auto 2rem" }}>MY ARSENAL</div>
           <h2 className="section-title">Skills & <span className="highlight">Tech Stack</span></h2>
-          <p className="section-subtitle">A robust arsenal of modern frameworks, databases, and tooling.</p>
+          <p className="section-subtitle">A robust collection of modern frameworks, databases, and tooling.</p>
         </motion.div>
       </div>
 
-      <motion.div 
+      <motion.div
         className="marquee-container"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+        transition={{ duration: 1, delay: 0.2 }}
       >
         <div className="marquee-wrapper">
           {renderMarquee(row1, false)}
@@ -80,7 +95,7 @@ const ExpertiseSection = () => {
         <div className="marquee-wrapper mt-4">
           {renderMarquee(row2, true)}
         </div>
-        
+
         {/* Gradient fades for the edges of the screen */}
         <div className="fade-left"></div>
         <div className="fade-right"></div>

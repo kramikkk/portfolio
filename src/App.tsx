@@ -11,6 +11,7 @@ import CaseStudies from './components/CaseStudies';
 import ExperienceSection from './components/ExperienceSection';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -31,6 +32,9 @@ function App() {
       {!isLoaded && (
         <Preloader onLoadComplete={() => setIsLoaded(true)} totalFrames={144} />
       )}
+
+      {/* Render the global Navigation Bar */}
+      <Navbar />
 
       {/* Main Content becomes interactive and visible once loaded */}
       <motion.main

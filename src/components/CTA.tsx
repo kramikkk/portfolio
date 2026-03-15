@@ -1,17 +1,27 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FileText, ArrowRight } from 'lucide-react';
 import './CTA.css';
 
 const CTA = () => {
+  const containerRef = useRef<HTMLElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "center center"]
+  });
+
+  // Scale the CTA card up as the user scrolls it into the center of the viewport
+  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
+
   return (
-    <section className="cta-section" id="contact">
+    <section className="cta-section" id="contact" ref={containerRef}>
       <div className="container">
         <motion.div
           className="cta-content"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          style={{ scale, opacity, y }}
         >
           <div className="cta-background-effect" />
 

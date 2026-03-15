@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { Linkedin, Dribbble, Instagram, Twitter } from 'lucide-react';
 import './Footer.css';
 
@@ -5,10 +6,16 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer-content">
+        <motion.div 
+          className="footer-content"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
           <div className="footer-brand">
             <div className="footer-logo">
-              Kramik<span className="dot">.</span>
+              Mark Jeric<span className="dot">.</span>
             </div>
             <p className="footer-description">
               Creating intuitive digital experiences, striking brand identities, and cinematic product animations.
@@ -34,11 +41,17 @@ const Footer = () => {
               <li><a href="#">Twitter</a></li>
             </ul>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="footer-bottom">
+        <motion.div 
+          className="footer-bottom"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "0px" }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
           <div className="copyright">
-            &copy; {new Date().getFullYear()} Kramik. All rights reserved.
+            &copy; {new Date().getFullYear()} Mark Jeric B. Exconde. All rights reserved.
           </div>
           <div className="footer-socials">
             <a href="#" className="social-icon-small"><Linkedin size={18} /></a>
@@ -46,7 +59,7 @@ const Footer = () => {
             <a href="#" className="social-icon-small"><Instagram size={18} /></a>
             <a href="#" className="social-icon-small"><Twitter size={18} /></a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
