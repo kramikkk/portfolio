@@ -53,15 +53,20 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 0;
-  /* Removed padding that misaligned it vertically */
   position: relative;
   z-index: 1001;
-  /* Keep above the menu overlay */
   overflow: hidden;
   height: 24px;
-  /* Explicit tight height matching line-height */
   display: flex;
   align-items: flex-start;
+  /* 44px minimum touch target via pseudo-element so layout is unaffected */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-toggle::after {
+  content: '';
+  position: absolute;
+  inset: -10px -12px;
 }
 
 .menu-text {

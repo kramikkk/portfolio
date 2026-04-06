@@ -32,7 +32,8 @@
 
 .letter {
   display: inline-block;
-  font-size: clamp(10rem, 18vw, 20rem);
+  /* 3rem min so mobile phones never overflow; 18vw is naturally responsive */
+  font-size: clamp(3rem, 18vw, 20rem);
   font-weight: 800;
   font-style: italic;
   color: var(--text-primary);
@@ -61,4 +62,19 @@
   color: var(--text-secondary);
   letter-spacing: 0.15em;
   font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .preloader-dot {
+    width: clamp(0.5rem, 2vw, 0.85rem);
+    height: clamp(0.5rem, 2vw, 0.85rem);
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    margin-left: 0.08em;
+  }
+
+  .preloader-counter {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.75rem;
+  }
 }

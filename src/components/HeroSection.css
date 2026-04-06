@@ -86,6 +86,16 @@
   transition: color 0.3s;
 }
 
+/* Shown on desktop only, hidden on mobile */
+.desktop-break {
+  display: block;
+}
+
+/* Hidden on desktop, shown on mobile to force line break before Exconde */
+.mobile-break {
+  display: none;
+}
+
 .hero-title span:focus {
   color: var(--accent-color);
 }
@@ -236,9 +246,18 @@
 }
 
 @media (max-width: 768px) {
+  .desktop-break {
+    display: none;
+  }
+
+  .mobile-break {
+    display: block;
+  }
+
   .skills-row {
     flex-direction: column;
     gap: 0.8rem;
+    align-items: center;
   }
 
   .hero-title {
@@ -440,37 +459,48 @@
     gap: 2rem;
   }
 
+  /* ── Centre all hero text blocks on mobile ── */
   .left-block {
-    top: 15%;
-    left: 5%;
-    max-width: 85%;
+    top: 12%;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    padding: 0 6%;
+    text-align: center;
+    align-items: center;
   }
 
   .right-block {
     top: auto;
     bottom: 12%;
-    right: 5%;
-    left: 5%;
-    max-width: none;
-    text-align: left;
-    align-items: flex-start;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    padding: 0 6%;
+    text-align: center;
+    align-items: center;
   }
 
   .subheadline {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .supporting-quote {
-    font-size: 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .code-quote-body {
+    text-align: center;
   }
 
   .mid-block-left,
   .mid-block-right {
-    left: 5%;
-    right: 5%;
-    max-width: 90%;
-    text-align: left;
-    align-items: flex-start;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    padding: 0 6%;
+    text-align: center;
+    align-items: center;
   }
 
   .mid-block-left {
@@ -524,11 +554,12 @@
 @media (max-width: 480px) {
   .hero-title {
     font-size: clamp(2rem, 10vw, 3rem);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .intro-line {
     font-size: 0.8rem;
+    margin-bottom: 0.75rem;
   }
 
   .skills-row {
@@ -539,8 +570,44 @@
     font-size: 0.7rem;
   }
 
+  .right-block {
+    bottom: 20%;
+    top: auto;
+    left: 0;
+    right: 0;
+    padding: 0 6%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .subheadline {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .supporting-quote {
+    font-size: 0.75rem;
+  }
+
+  /* Fix code block overflow on mobile */
+  .code-quote-body {
+    white-space: pre-wrap;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1.7;
+  }
+
+  .mid-block-left {
+    top: 20%;
+  }
+
+  .mid-block-right {
+    top: 52%;
+  }
+
   .mid-headline {
     font-size: clamp(1.5rem, 8vw, 2.5rem);
+    margin-bottom: 0.5rem;
   }
 
   .mid-description {
@@ -549,10 +616,15 @@
 
   .about-hero-stats {
     gap: 1.5rem;
+    margin-top: 1.5rem;
   }
 
   .hero-stat-num {
     font-size: clamp(1.5rem, 8vw, 2.5rem);
+  }
+
+  .about-hero-body {
+    font-size: 0.875rem;
   }
 
   .sticky-hero {

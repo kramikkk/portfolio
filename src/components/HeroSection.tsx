@@ -189,9 +189,11 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
             transition={{ duration: 0.8, delay: 0.4 }}
             style={{ cursor: 'default' }}
           >
-            <span>Mark</span><br />
-            <span>Jeric B. </span>
-            <span className="highlight">Exconde</span>
+            <span>Mark</span>
+            <br className="desktop-break" />
+            <span> Jeric B.</span>
+            <br className="mobile-break" />
+            <span className="highlight"> Exconde</span>
           </motion.h1>
 
           <motion.div
@@ -233,12 +235,8 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
               <span className='highlight' >Codename:</span> Kramik
             </h2>
             <div className="code-quote">
-              <pre className="code-quote-body">
-                <span className="cq-keyword">const</span> <span className="cq-var">dev</span> <span className="cq-op">=</span> <span className="cq-keyword">new</span> <span className="cq-fn">Kramik</span>()<span className="cq-op">;</span>{'\n'}
-                <span className="cq-var">dev</span><span className="cq-op">.</span><span className="cq-fn">build</span>(<span className="cq-string">"ideas"</span>)<span className="cq-op">;</span>{'\n'}
-                <span className="cq-var">dev</span><span className="cq-op">.</span><span className="cq-fn">ship</span>(<span className="cq-string">"products"</span>)<span className="cq-op">;</span>{'\n'}
-                <span className="cq-comment">// repeat until the world notices.</span>
-              </pre>
+              {/* No leading whitespace inside <pre> — each span starts at column 0 */}
+              <pre className="code-quote-body"><span className="cq-keyword">const</span> <span className="cq-var">dev</span> <span className="cq-op">=</span> <span className="cq-keyword">new</span> <span className="cq-fn">Kramik</span>()<span className="cq-op">;</span>{'\n'}<span className="cq-var">dev</span><span className="cq-op">.</span><span className="cq-fn">build</span>(<span className="cq-string">"ideas"</span>)<span className="cq-op">;</span>{'\n'}<span className="cq-var">dev</span><span className="cq-op">.</span><span className="cq-fn">ship</span>(<span className="cq-string">"products"</span>)<span className="cq-op">;</span>{'\n'}<span className="cq-comment">// repeat until the world notices.</span></pre>
             </div>
           </motion.div>
         </motion.div>
