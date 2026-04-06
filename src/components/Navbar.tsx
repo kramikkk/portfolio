@@ -4,16 +4,17 @@ import { Youtube, Instagram, Linkedin, Github, Download } from 'lucide-react';
 import './Navbar.css';
 
 const navLinks = [
-  { title: "Home", href: "#" },
-  { title: "Skills", href: "#expertise" },
-  { title: "Projects", href: "#work" },
-  { title: "Experience", href: "#experience" },
-  { title: "Contact", href: "#contact" }
+  { title: "Home", href: "#home", sectionId: "home" },
+  { title: "Skills", href: "#expertise", sectionId: "expertise" },
+  { title: "Projects", href: "#work", sectionId: "work" },
+  { title: "Experience", href: "#experience", sectionId: "experience" },
+  { title: "Contact", href: "#contact", sectionId: "contact" }
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const { scrollY } = useScroll();
 
   // Hide nav on scroll down, reveal on scroll up
@@ -32,6 +33,28 @@ const Navbar = () => {
       setHidden(false); // scrolling up
     }
   });
+
+  // Track active section via IntersectionObserver
+  useEffect(() => {
+    const sectionIds = navLinks.map(l => l.sectionId);
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach(o => o.disconnect());
+  }, []);
 
   // Prevent scrolling when menu is open and fix layout shift from missing scrollbar
   useEffect(() => {
@@ -148,9 +171,12 @@ const Navbar = () => {
               </motion.a>
             </div>
 
-            <motion.button 
-              className="menu-toggle" 
+            <motion.button
+              className="menu-toggle"
               onClick={toggleMenu}
+              aria-expanded={isOpen}
+              aria-controls="full-page-menu"
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
               animate={{ color: isOpen ? "var(--accent-color)" : "#ffffff" }}
               whileHover={{ color: "var(--accent-color)" }}
               transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] as [number, number, number, number] }}
@@ -167,6 +193,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="full-page-menu"
             className="full-page-menu"
             initial="closed"
             animate="open"
@@ -190,6 +217,7 @@ const Navbar = () => {
                             href={link.href}
                             variants={linkItemVariants}
                             onClick={closeMenu}
+                            className={activeSection === link.sectionId ? 'is-active' : ''}
                           >
                             <span className="menu-link-num">0{i + 1}</span>
                             <div className="menu-link-text-wrapper">
@@ -216,7 +244,7 @@ const Navbar = () => {
 
                   <motion.div className="menu-resume" variants={fadeVariants}>
                     <span>Resume</span>
-                    <a href="/Resume-links.pdf" download className="resume-download-link">
+                    <a href="/Mark-Jeric-Exconde-Resume.pdf" download className="resume-download-link">
                       Download CV <Download size={18} />
                     </a>
                   </motion.div>

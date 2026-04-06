@@ -1,5 +1,6 @@
 :root {
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: var(--font-sans);
 
   --bg-primary: #0a0a0a;
   --bg-secondary: #121212;
@@ -55,7 +56,7 @@ button {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -63,8 +64,8 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-secondary);
-  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -186,5 +187,25 @@ h6 {
 
   .section-title {
     font-size: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track {
+    animation: none !important;
+  }
+
+  .scroll-dot {
+    animation: none !important;
+    opacity: 0.6;
   }
 }

@@ -57,7 +57,7 @@ const Footer = () => {
               </motion.a>
 
               <motion.a
-                href="/Resume-links.pdf"
+                href="/Mark-Jeric-Exconde-Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-resume-link"

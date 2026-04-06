@@ -190,8 +190,17 @@
   margin-top: clamp(0.5rem, 1.5vw, 1rem);
 }
 
-.menu-link-item a:hover {
+.menu-link-item a:hover,
+.menu-link-item a.is-active {
   transform: translateX(30px) skewX(-5deg);
+}
+
+.menu-link-item a.is-active .menu-link-text-original {
+  color: var(--accent-color);
+}
+
+.menu-link-item a.is-active .menu-link-num {
+  opacity: 1;
 }
 
 .menu-link-item a:hover .menu-link-text-original {

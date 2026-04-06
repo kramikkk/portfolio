@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { Linkedin, Github, Instagram } from 'lucide-react';
 import { useMotionValue, animate } from 'framer-motion';
 import './HeroSection.css';
@@ -32,6 +32,7 @@ interface HeroParallaxProps {
 const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   // Custom scroll tracking that we map to our frames
   const { scrollYProgress } = useScroll({
@@ -125,31 +126,29 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
 
   // Parallax Text Scrolling Transforms
   // Segment 1: Initial Identity (0% - 25%)
-  const leftTextY = useTransform(scrollYProgress, [0, 0.25], [0, -250]);
+  const leftTextY = useTransform(scrollYProgress, [0, 0.25], prefersReducedMotion ? [0, 0] : [0, -250]);
   const leftTextOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
-  const rightTextY = useTransform(scrollYProgress, [0, 0.25], [0, -450]);
+  const rightTextY = useTransform(scrollYProgress, [0, 0.25], prefersReducedMotion ? [0, 0] : [0, -450]);
   const rightTextOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
-  const bottomSocialsY = useTransform(scrollYProgress, [0, 0.2], [0, 100]);
+  const bottomSocialsY = useTransform(scrollYProgress, [0, 0.2], prefersReducedMotion ? [0, 0] : [0, 100]);
   const bottomSocialsOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
   // Segment 2: Philosophy / Mid-Blocks (25% - 60%)
-  // Left Block (Computer Engineer)
-  const midLeftY = useTransform(scrollYProgress, [0.25, 0.55], [150, -150]);
+  const midLeftY = useTransform(scrollYProgress, [0.25, 0.55], prefersReducedMotion ? [0, 0] : [150, -150]);
   const midLeftOpacity = useTransform(scrollYProgress, [0.25, 0.3, 0.45, 0.55], [0, 1, 1, 0]);
 
-  // Right Block (Website Developer)
-  const midRightY = useTransform(scrollYProgress, [0.3, 0.6], [100, -250]);
+  const midRightY = useTransform(scrollYProgress, [0.3, 0.6], prefersReducedMotion ? [0, 0] : [100, -250]);
   const midRightOpacity = useTransform(scrollYProgress, [0.3, 0.35, 0.5, 0.6], [0, 1, 1, 0]);
 
   // Segment 3: About / Bio Integration (60% - 100%)
   const aboutDarkOverlayOpacity = useTransform(scrollYProgress, [0.55, 0.75], [0, 0.35]);
 
-  const aboutY = useTransform(scrollYProgress, [0.6, 0.95], [150, -50]);
+  const aboutY = useTransform(scrollYProgress, [0.6, 0.95], prefersReducedMotion ? [0, 0] : [150, -50]);
   const aboutOpacity = useTransform(scrollYProgress, [0.6, 0.75, 0.9, 1], [0, 1, 1, 1]);
-  const aboutBgTextX = useTransform(scrollYProgress, [0.6, 1], ["-10%", "5%"]);
-  const aboutBgTextXReverse = useTransform(scrollYProgress, [0.6, 1], ["10%", "-5%"]);
+  const aboutBgTextX = useTransform(scrollYProgress, [0.6, 1], prefersReducedMotion ? ["0%", "0%"] : ["-10%", "5%"]);
+  const aboutBgTextXReverse = useTransform(scrollYProgress, [0.6, 1], prefersReducedMotion ? ["0%", "0%"] : ["10%", "-5%"]);
 
   // Trigger for count-up animation
   const [statsTriggered, setStatsTriggered] = useState(false);
@@ -233,9 +232,14 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
             <h2 className="subheadline">
               <span className='highlight' >Codename:</span> Kramik
             </h2>
-            <p className="supporting-paragraph">
-              Specializing in full-stack development—from robust backend architectures and API integrations to highly performant, accessible, and pixel-perfect frontend interfaces.
-            </p>
+            <div className="code-quote">
+              <pre className="code-quote-body">
+                <span className="cq-keyword">const</span> <span className="cq-var">dev</span> <span className="cq-op">=</span> <span className="cq-keyword">new</span> <span className="cq-fn">Kramik</span>()<span className="cq-op">;</span>{'\n'}
+                <span className="cq-var">dev</span><span className="cq-op">.</span><span className="cq-fn">build</span>(<span className="cq-string">"ideas"</span>)<span className="cq-op">;</span>{'\n'}
+                <span className="cq-var">dev</span><span className="cq-op">.</span><span className="cq-fn">ship</span>(<span className="cq-string">"products"</span>)<span className="cq-op">;</span>{'\n'}
+                <span className="cq-comment">// repeat until the world notices.</span>
+              </pre>
+            </div>
           </motion.div>
         </motion.div>
 
@@ -278,7 +282,7 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
             Computer <br /> <span className="highlight">Engineer</span>
           </h2>
           <p className="mid-description">
-            I bridge the gap between hardware precision and software excellence. By designing resilient system architectures and robust engineering workflows, I ensure every solution is grounded in technical rigor and structural integrity.
+            Where hardware engineering meets software engineering.
           </p>
         </motion.div>
 
@@ -292,16 +296,17 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
             <span className="highlight">Developer</span>
           </h2>
           <p className="mid-description">
-            Specializing in modern full-stack ecosystems. I craft pixel-perfect, highly performant web applications that bridge the gap between complex backend logic and intuitive, world-class user interfaces.
+            Crafting performant web apps from backend logic to frontend UI.
           </p>
         </motion.div>
 
         {/* Segment 3: About Integration (The Finale) */}
         <motion.div
-          className="hero-about-container"
+          className="hero-about-wrapper"
           id="about"
           style={{ y: aboutY, opacity: aboutOpacity }}
         >
+        <div className="hero-about-container">
           {/* Upper Left background text */}
           <motion.div className="about-bg-text-hero top-left-bg" style={{ x: aboutBgTextX }}>
             <span className="outline-text-hero">KRAMIK</span>
@@ -317,13 +322,13 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
               <div className="about-badge">ABOUT ME</div>
               <h2 className="about-hero-title">Mark Jeric B. <span className="highlight">Exconde</span></h2>
               <p className="about-hero-body">
-                I’m a 22-year-old Computer Engineering student at Laguna State Polytechnic University - San Pablo City Campus who is currently living in Tiaong Quezon, Philippines.
+                I’m a 22-year-old Computer Engineering student at Laguna State Polytechnic University - San Pablo City Campus, currently living in Tiaong, Quezon, Philippines.
               </p>
 
               <div className="about-hero-stats">
                 <div className="hero-stat-item">
-                  <span className="hero-stat-num"><Counter value={2} trigger={statsTriggered} />+</span>
-                  <span className="hero-stat-label">Months OJT</span>
+                  <span className="hero-stat-num"><Counter value={3} trigger={statsTriggered} />+</span>
+                  <span className="hero-stat-label">Years Coding</span>
                 </div>
                 <div className="hero-stat-item">
                   <span className="hero-stat-num"><Counter value={8} trigger={statsTriggered} />+</span>
@@ -336,6 +341,7 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
               </div>
             </div>
           </div>
+        </div>
         </motion.div>
 
       </motion.div>

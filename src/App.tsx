@@ -27,7 +27,7 @@ function App() {
   }, []);
 
   return (
-    <div className="app-wrapper bg-primary text-primary">
+    <div id="home" className="app-wrapper bg-primary text-primary">
       {preloaderMounted && (
         <Preloader
           onLoadComplete={() => setIsLoaded(true)}

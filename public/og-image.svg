@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+
+  <!-- Subtle bottom border line -->
+  <line x1="0" y1="628" x2="1200" y2="628" stroke="#ff5500" stroke-width="3"/>
+
+  <!-- Large decorative K — right-side watermark -->
+  <g transform="translate(680, 30) scale(4.8)" opacity="0.06">
+    <text x="42" y="80" font-weight="900" font-size="82px" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" fill="#ffffff" text-anchor="middle">K</text>
+    <circle cx="74" cy="74" r="7" fill="#ff5500" />
+  </g>
+
+  <!-- Left accent vertical bar -->
+  <rect x="80" y="155" width="3" height="320" fill="#ff5500"/>
+
+  <!-- PORTFOLIO badge -->
+  <rect x="104" y="162" width="148" height="30" rx="15" fill="none" stroke="#ff5500" stroke-width="1.5" opacity="0.8"/>
+  <text x="178" y="182" text-anchor="middle" font-size="11" font-weight="bold"
+        fill="#ff5500" font-family="Arial, sans-serif" letter-spacing="3">PORTFOLIO</text>
+
+  <!-- Name — KRAMIK. -->
+  <text x="104" y="318" font-size="108" font-weight="900"
+        fill="#ffffff" font-family="Arial Black, Arial, sans-serif"
+        letter-spacing="-5">KRAMIK<tspan fill="#ff5500">.</tspan></text>
+
+  <!-- Full name -->
+  <text x="108" y="368" font-size="24" fill="#a3a3a3"
+        font-family="Arial, sans-serif" letter-spacing="-0.5">
+    Mark Jeric B. Exconde
+  </text>
+
+  <!-- Role tags -->
+  <text x="108" y="416" font-size="14" font-weight="bold"
+        fill="#ff5500" font-family="Arial, sans-serif" letter-spacing="2.5">
+    FULL-STACK DEVELOPER  ·  COMPUTER ENGINEER  ·  IoT
+  </text>
+
+  <!-- Thin rule -->
+  <line x1="108" y1="448" x2="660" y2="448" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+
+  <!-- Tech stack line -->
+  <text x="108" y="476" font-size="14" fill="#555555"
+        font-family="Arial, sans-serif" letter-spacing="0.8">
+    React  ·  Next.js  ·  TypeScript  ·  Node.js  ·  C++  ·  Embedded Systems
+  </text>
+
+  <!-- Bottom-left copyright -->
+  <text x="108" y="602" font-size="13" fill="#333333"
+        font-family="Arial, sans-serif" letter-spacing="0.5">
+    © 2025 Mark Jeric Exconde
+  </text>
+
+  <!-- Bottom-right handle -->
+  <text x="1092" y="602" text-anchor="end" font-size="13" fill="#333333"
+        font-family="Arial, sans-serif" letter-spacing="0.5">
+    kramik.dev
+  </text>
+
+  <!-- Small K favicon in bottom-right corner as signature -->
+  <g transform="translate(1120, 560) scale(0.38)">
+    <text x="42" y="80" font-weight="900" font-size="82px" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" fill="#ffffff" text-anchor="middle">K</text>
+    <circle cx="74" cy="74" r="7" fill="#ff5500" />
+  </g>
+</svg>
