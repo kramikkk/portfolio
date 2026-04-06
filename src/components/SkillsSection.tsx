@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView, useScroll, useVelocity, useSpring, useTransform } from 'framer-motion';
-import './ExpertiseSection.css';
+import './SkillsSection.css';
 
 const row1 = [
   { name: 'Next.js', slug: 'nextdotjs', color: 'white' },
@@ -51,7 +51,7 @@ const skillCategories = [
   }
 ];
 
-const ExpertiseSection = () => {
+const SkillsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
@@ -146,4 +146,4 @@ const ExpertiseSection = () => {
   );
 };
 
-export default ExpertiseSection;
+export default SkillsSection;

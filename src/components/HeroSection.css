@@ -311,6 +311,14 @@
   text-align: center;
 }
 
+.hero-about-dark-overlay {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  pointer-events: none;
+  z-index: 3;
+}
+
 .hero-about-container * {
   pointer-events: auto;
 }

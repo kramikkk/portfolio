@@ -1,191 +1,205 @@
-.experience-section {
+/* ─── Section shell ─────────────────────────────────────── */
+.exp-section {
   background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
+  padding: clamp(5rem, 10vw, 10rem) 0;
+  overflow: hidden;
 }
 
-.experience-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-}
 
-.timeline-header {
+/* ─── Top label row ──────────────────────────────────────── */
+.exp-label-row {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 3rem;
-  color: #fff;
+  gap: 1.25rem;
+  margin-bottom: clamp(3rem, 6vw, 6rem);
 }
 
-.timeline-icon-main {
-  color: var(--accent-color);
-  width: 32px;
-  height: 32px;
-}
-
-.timeline-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-@media (min-width: 1440px) {
-  .timeline-title {
-    font-size: 3rem;
-  }
-}
-
-@media (min-width: 1920px) {
-  .timeline-title {
-    font-size: 3.5rem;
-  }
-}
-
-.timeline-items {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  position: relative;
-  /* Add padding bottom to ensure line reaches past last element */
-  padding-bottom: 2rem;
-}
-
-/* Base dark static line */
-.timeline-line-base {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 2px;
-  background: var(--border-color);
-  z-index: 0;
-}
-
-/* Active colored line drawn on top */
-.timeline-line-active {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 2px;
-  background: var(--accent-color);
-  z-index: 1;
-  transform-origin: top;
-  will-change: transform;
-}
-
-.timeline-card {
-  position: relative;
-  padding-left: 2.5rem;
-  z-index: 2;
-}
-
-/* Explicit animated dot replaces ::before */
-.timeline-dot {
-  position: absolute;
-  top: 6px;
-  left: -5px;
-  /* Adjust left to center 12px dot on 2px line */
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: var(--accent-color);
-  box-shadow: 0 0 10px rgba(255, 85, 0, 0.5);
-  z-index: 3;
-}
-
-.timeline-card:hover .timeline-dot {
-  transform: scale(1.3) !important;
-  /* Override inline style from framer */
-  box-shadow: 0 0 15px var(--accent-color);
-}
-
-.timeline-period {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--accent-color);
+.exp-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.exp-label-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+/* ─── Grid ───────────────────────────────────────────────── */
+.exp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0 clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+}
+
+/* ─── Column headings ────────────────────────────────────── */
+.exp-col-heading {
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: clamp(2.5rem, 4vw, 4rem);
+  line-height: 1;
+}
+
+.exp-col--right .exp-col-heading {
+  padding-left: clamp(2.5rem, 5vw, 5rem);
+}
+
+/* ─── Center animated rule ───────────────────────────────── */
+.exp-divider {
+  position: relative;
+  align-self: stretch;
+}
+
+.exp-divider-track {
+  position: absolute;
+  inset: 0;
+  width: 1px;
+  background: var(--border-color);
+}
+
+.exp-divider-fill {
+  position: absolute;
+  inset: 0;
+  width: 1px;
+  background: var(--accent-color);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* ─── Editorial entry ────────────────────────────────────── */
+.editorial-entry {
+  position: relative;
+  margin-bottom: clamp(3rem, 5vw, 5rem);
+}
+
+.editorial-entry--right {
+  padding-left: clamp(2.5rem, 5vw, 5rem);
+}
+
+/* ─── Ghost index number ─────────────────────────────────── */
+.editorial-index {
+  display: block;
+  font-size: clamp(5rem, 12vw, 13rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--border-color) 70%, transparent);
+  user-select: none;
+  pointer-events: none;
+  margin-bottom: -0.35em;
+  margin-left: -0.05em;
+}
+
+/* ─── Entry body ─────────────────────────────────────────── */
+.editorial-body {
+  position: relative;
+}
+
+.editorial-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.editorial-period {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-color);
   font-weight: 600;
+}
+
+.editorial-period em {
+  font-style: normal;
+  opacity: 0.5;
+  margin: 0 0.2em;
+}
+
+.editorial-badge {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  padding: 0.15em 0.6em;
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+/* ─── Title ──────────────────────────────────────────────── */
+.editorial-title {
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  line-height: 1.1;
   margin-bottom: 0.5rem;
 }
 
-.timeline-role {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 0.25rem;
-  line-height: 1.3;
-}
-
-@media (min-width: 1440px) {
-  .timeline-role {
-    font-size: 1.75rem;
-  }
-}
-
-@media (min-width: 1920px) {
-  .timeline-role {
-    font-size: 2rem;
-  }
-}
-
-.timeline-entity {
-  font-size: 1.1rem;
+/* ─── Org + location ─────────────────────────────────────── */
+.editorial-org {
+  font-size: clamp(0.875rem, 1.1vw, 1rem);
   color: var(--text-secondary);
   font-weight: 500;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
-.timeline-description {
+.editorial-location {
+  opacity: 0.6;
+}
+
+/* ─── Animated horizontal rule ───────────────────────────── */
+.editorial-rule {
+  height: 1px;
+  background: var(--border-color);
+  transform-origin: left center;
+  will-change: transform;
+  margin-bottom: 1.25rem;
+}
+
+/* ─── Description ────────────────────────────────────────── */
+.editorial-desc {
+  font-size: clamp(0.875rem, 1vw, 0.95rem);
   color: var(--text-secondary);
-  line-height: 1.6;
-  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 44ch;
 }
 
-@media (min-width: 1440px) {
-  .timeline-description {
-    font-size: 1.1rem;
-  }
-}
-
-@media (min-width: 1920px) {
-  .timeline-description {
-    font-size: 1.25rem;
-  }
-}
-
+/* ─── Mobile ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .experience-grid {
+  .exp-grid {
     grid-template-columns: 1fr;
-    gap: 4rem;
+    gap: 0;
   }
 
-  .timeline-title {
-    font-size: 1.75rem;
+  .exp-divider {
+    display: none;
   }
 
-  .timeline-role {
-    font-size: 1.15rem;
+  .exp-col--right .exp-col-heading,
+  .editorial-entry--right {
+    padding-left: 0;
   }
 
-  .timeline-entity {
-    font-size: 0.95rem;
+  .exp-col--right {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border-color);
   }
 
-  .timeline-description {
-    font-size: 0.9rem;
+  .editorial-index {
+    font-size: clamp(4rem, 20vw, 6rem);
   }
 
-  .timeline-card {
-    padding-left: 2rem;
-  }
-
-  .timeline-period {
-    font-size: 0.75rem;
+  .editorial-title {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
   }
 }

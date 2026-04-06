@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import './CaseStudies.css';
+import './ProjectsSection.css';
 
 const projects = [
   {
@@ -21,7 +21,7 @@ const projects = [
     description: 'An automated IoT solution for shoe cleaning, sterilization, and drying with Google GenAI material classification.',
     image: '/images/shoes.png',
     tech: ['Next.js', 'Google GenAI', 'ESP32', 'WebSockets'],
-    demoUrl: '#',
+    demoUrl: 'https://smart-shoe-care-machine.onrender.com/',
     projectUrl: 'https://github.com/kramikkk/smart-shoe-care-machine'
   },
   {
@@ -81,7 +81,7 @@ const projects = [
   }
 ];
 
-const CaseStudies = () => {
+const ProjectsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -209,4 +209,4 @@ const ProjectPaginationDot = ({ progress, range }: { progress: any, range: [numb
   );
 };
 
-export default CaseStudies;
+export default ProjectsSection;

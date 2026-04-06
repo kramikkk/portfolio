@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Linkedin, Github, Instagram } from 'lucide-react';
 import { useMotionValue, animate } from 'framer-motion';
-import './HeroParallax.css';
+import './HeroSection.css';
 
 interface CounterProps {
   value: number;
@@ -29,7 +29,7 @@ interface HeroParallaxProps {
   totalFrames?: number;
 }
 
-const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
+const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -40,6 +40,7 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
   });
 
   const [images, setImages] = useState<HTMLImageElement[]>([]);
+  const currentFrameRef = useRef<number>(0);
 
   // We preload again or use cached images to draw to canvas
   useEffect(() => {
@@ -107,10 +108,19 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
         totalFrames - 1,
         Math.max(0, Math.floor(latest * totalFrames))
       );
+      currentFrameRef.current = frameIndex;
       requestAnimationFrame(() => renderFrame(frameIndex, images));
     });
 
-    return () => unsubscribe();
+    const handleResize = () => {
+      requestAnimationFrame(() => renderFrame(currentFrameRef.current, images));
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      unsubscribe();
+      window.removeEventListener('resize', handleResize);
+    };
   }, [scrollYProgress, images, totalFrames]);
 
   // Parallax Text Scrolling Transforms
@@ -134,6 +144,8 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
   const midRightOpacity = useTransform(scrollYProgress, [0.3, 0.35, 0.5, 0.6], [0, 1, 1, 0]);
 
   // Segment 3: About / Bio Integration (60% - 100%)
+  const aboutDarkOverlayOpacity = useTransform(scrollYProgress, [0.55, 0.75], [0, 0.35]);
+
   const aboutY = useTransform(scrollYProgress, [0.6, 0.95], [150, -50]);
   const aboutOpacity = useTransform(scrollYProgress, [0.6, 0.75, 0.9, 1], [0, 1, 1, 1]);
   const aboutBgTextX = useTransform(scrollYProgress, [0.6, 1], ["-10%", "5%"]);
@@ -156,6 +168,7 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
       <motion.div className="sticky-hero">
         <canvas className="hero-canvas" ref={canvasRef} />
         <div className="hero-overlay"></div>
+        <motion.div className="hero-about-dark-overlay" style={{ opacity: aboutDarkOverlayOpacity }} />
 
         {/* Left Side Text Block */}
         <motion.div
@@ -330,4 +343,4 @@ const HeroParallax: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
   );
 };
 
-export default HeroParallax;
+export default HeroSection;

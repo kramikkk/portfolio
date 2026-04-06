@@ -129,7 +129,7 @@ const Footer = () => {
             <p>&copy; {new Date().getFullYear()} Mark Jeric B. Exconde</p>
           </div>
           <div className="footer-credit">
-            <p>Designed & Built with <span className="highlight">Passion</span></p>
+            <p>Designed & Built by <span className="highlight">Kramik</span></p>
           </div>
         </div>
       </div>

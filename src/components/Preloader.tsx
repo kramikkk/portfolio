@@ -4,6 +4,7 @@ import './Preloader.css';
 
 interface PreloaderProps {
   onLoadComplete: () => void;
+  onHidden?: () => void;
   totalFrames?: number;
 }
 
@@ -44,7 +45,7 @@ const dotVariants = {
   },
 };
 
-function Preloader({ onLoadComplete, totalFrames = 144 }: PreloaderProps) {
+function Preloader({ onLoadComplete, onHidden, totalFrames = 144 }: PreloaderProps) {
   const [loadedFrames, setLoadedFrames] = useState(0);
   const [isDone, setIsDone] = useState(false);
 
@@ -71,17 +72,21 @@ function Preloader({ onLoadComplete, totalFrames = 144 }: PreloaderProps) {
     });
   }, [totalFrames]);
 
+  useEffect(() => {
+    if (isDone) onLoadComplete();
+  }, [isDone, onLoadComplete]);
+
   const progress = Math.min(100, Math.round((loadedFrames / totalFrames) * 100));
   const displayProgress = String(progress).padStart(2, '0');
 
   return (
-    <AnimatePresence onExitComplete={onLoadComplete}>
+    <AnimatePresence onExitComplete={onHidden}>
       {!isDone && (
         <motion.div
           className="preloader"
-          initial={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.04 }}
-          transition={{ duration: 0.9, ease: 'easeInOut' }}
+          initial={{ y: 0 }}
+          exit={{ y: '-100%' }}
+          transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
         >
           <motion.div
             className="preloader-word"
