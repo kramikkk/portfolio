@@ -21,6 +21,13 @@
   display: inline-block;
   overflow: hidden;
   line-height: 0.85;
+  /* Italic overhang — padding gives room, negative margin keeps layout tight */
+  padding-top: 0.2em;
+  margin-top: -0.2em;
+  padding-right: 0.14em;
+  margin-right: -0.14em;
+  padding-left: 0.06em;
+  margin-left: -0.06em;
 }
 
 .letter {
