@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 import Preloader from './components/Preloader';
 import HeroSection from './components/HeroSection';
@@ -61,6 +62,7 @@ function App() {
           </div>
         </main>
       </motion.div>
+      <SpeedInsights />
     </div>
   );
 }
