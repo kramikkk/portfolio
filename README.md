@@ -1,73 +1,95 @@
-# React + TypeScript + Vite
+# kramik-portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site for Mark Jeric Exconde (Kramik) — Full-Stack Developer and Computer Engineering student.
 
-Currently, two official plugins are available:
+**Live:** [kramik-portfolio.vercel.app](https://kramik-portfolio.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Package | Version | Purpose |
+|---------|---------|---------|
+| React | ^19.2.4 | UI framework |
+| TypeScript | ~5.9.3 | Type safety (strict mode) |
+| Vite | ^8.0.0 | Build tool |
+| Framer Motion | ^12.36.0 | Scroll-driven & gesture animations |
+| Lenis | ^1.3.18 | Smooth scroll |
+| Lucide React | ^0.577.0 | Icons |
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Canvas preloader** — 144 WebP frames played back as a full-screen animation while assets load
+- **Scroll-scrubbed hero** — canvas frame index driven by scroll position (0 → 143 over the hero section)
+- **Horizontal project carousel** — 8 projects mapped to a sticky horizontal track via scroll progress
+- **Skill marquee** — two auto-scrolling rows with scroll-velocity skew applied via `useVelocity` + `useSpring`
+- **Editorial experience layout** — two-column Experience / Education grid with animated vertical divider
+- **Real-time clock** — footer shows current Manila time updated every second
+- **Reduced-motion support** — all Framer Motion variants include `prefers-reduced-motion` fallbacks
+- **SEO** — Open Graph + Twitter Card meta tags in `index.html`, theme color `#0a0a0a`
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
+
+**Prerequisites:** Node.js (any recent LTS)
+
+```bash
+npm install
+npm run dev      # development server
+npm run build    # type-check then production build
+npm run preview  # preview production build locally
+npm run lint     # ESLint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Project Structure
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── main.tsx                  # React entry point
+├── App.tsx                   # Root — Lenis setup, preloader gate, section order
+├── App.css
+├── index.css                 # Design tokens + global styles
+└── components/
+    ├── Preloader.tsx / .css  # 144-frame canvas loading screen
+    ├── Navbar.tsx / .css     # Sticky header, full-screen menu overlay
+    ├── HeroSection.tsx / .css
+    ├── SkillsSection.tsx / .css
+    ├── ProjectsSection.tsx / .css
+    ├── ExperienceSection.tsx / .css
+    └── Footer.tsx / .css
+
+public/
+├── frames/                   # 144 WebP frames (required by Preloader)
+├── images/                   # Project screenshot assets
+├── Mark-Jeric-Exconde-Resume.pdf
+├── favicon.svg
+└── og-image.svg
+```
+
+---
+
+## Design Tokens
+
+CSS custom properties are defined in `src/index.css`:
+
+```css
+--bg-primary:    #0a0a0a
+--bg-secondary:  #121212
+--text-primary:  #ffffff
+--text-secondary: #a3a3a3
+--accent-color:  #ff5500
+--font-sans:     'Inter', system-ui, sans-serif
+```
+
+---
+
+## Notes
+
+- The `public/frames/` directory must be present for the preloader to work. It is not committed to the repo — generate or obtain the 144 WebP frames separately.
+- All project and experience data is hardcoded in their respective component files; there is no CMS or API.
+- Single-page layout — no client-side router. Navigation uses anchor links and scroll.
