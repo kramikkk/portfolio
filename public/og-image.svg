@@ -49,13 +49,13 @@
   <!-- Bottom-left copyright -->
   <text x="108" y="602" font-size="13" fill="#333333"
         font-family="Arial, sans-serif" letter-spacing="0.5">
-    © 2025 Mark Jeric Exconde
+    © 2026 Mark Jeric Exconde
   </text>
 
   <!-- Bottom-right handle -->
   <text x="1092" y="602" text-anchor="end" font-size="13" fill="#333333"
         font-family="Arial, sans-serif" letter-spacing="0.5">
-    kramik.dev
+    kramik-portfolio.vercel.app
   </text>
 
   <!-- Small K favicon in bottom-right corner as signature -->
