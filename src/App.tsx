@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
+import { Analytics } from '@vercel/analytics/react';
 
 import Preloader from './components/Preloader';
 import HeroSection from './components/HeroSection';
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <div id="home" className="app-wrapper bg-primary text-primary">
+      <Analytics />
       {preloaderMounted && (
         <Preloader
           onLoadComplete={() => setIsLoaded(true)}
