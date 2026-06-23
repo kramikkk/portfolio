@@ -1,80 +1,80 @@
 .preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--bg-primary);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-primary);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .preloader-word {
-  display: flex;
-  align-items: flex-end;
-  position: relative;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
 }
 
 .letter-clip {
-  display: inline-block;
-  overflow: hidden;
-  line-height: 0.85;
-  /* Italic overhang — padding gives room, negative margin keeps layout tight */
-  padding-top: 0.2em;
-  margin-top: -0.2em;
-  padding-right: 0.14em;
-  margin-right: -0.14em;
-  padding-left: 0.06em;
-  margin-left: -0.06em;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 0.85;
+    /* Italic overhang — padding gives room, negative margin keeps layout tight */
+    padding-top: 0.2em;
+    margin-top: -0.2em;
+    padding-right: 0.14em;
+    margin-right: -0.14em;
+    padding-left: 0.06em;
+    margin-left: -0.06em;
 }
 
 .letter {
-  display: inline-block;
-  /* 3rem min so mobile phones never overflow; 18vw is naturally responsive */
-  font-size: clamp(3rem, 18vw, 20rem);
-  font-weight: 800;
-  font-style: italic;
-  color: var(--text-primary);
-  line-height: 0.85;
-  letter-spacing: -0.02em;
+    display: inline-block;
+    /* 3rem min so mobile phones never overflow; 18vw is naturally responsive */
+    font-size: clamp(3rem, 18vw, 20rem);
+    font-weight: 800;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
 }
 
 .preloader-dot {
-  display: inline-block;
-  width: clamp(0.75rem, 1.1vw, 1.3rem);
-  height: clamp(0.75rem, 1.1vw, 1.3rem);
-  background-color: var(--accent-color);
-  border-radius: 50%;
-  box-shadow: 0 0 20px var(--accent-glow);
-  margin-bottom: clamp(0.9rem, 1.4vw, 1.6rem);
-  margin-left: 0.12em;
-  flex-shrink: 0;
+    display: inline-block;
+    width: clamp(0.75rem, 1.1vw, 1.3rem);
+    height: clamp(0.75rem, 1.1vw, 1.3rem);
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--accent-glow);
+    margin-bottom: clamp(0.9rem, 1.4vw, 1.6rem);
+    margin-left: 0.12em;
+    flex-shrink: 0;
 }
 
 .preloader-counter {
-  position: fixed;
-  bottom: 2.5rem;
-  right: 3rem;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  letter-spacing: 0.15em;
-  font-weight: 500;
+    position: fixed;
+    bottom: 2.5rem;
+    right: 3rem;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.15em;
+    font-weight: 500;
 }
 
 @media (max-width: 768px) {
-  .preloader-dot {
-    width: clamp(0.5rem, 2vw, 0.85rem);
-    height: clamp(0.5rem, 2vw, 0.85rem);
-    margin-bottom: clamp(0.5rem, 2vw, 1rem);
-    margin-left: 0.08em;
-  }
+    .preloader-dot {
+        width: clamp(0.5rem, 2vw, 0.85rem);
+        height: clamp(0.5rem, 2vw, 0.85rem);
+        margin-bottom: clamp(0.5rem, 2vw, 1rem);
+        margin-left: 0.08em;
+    }
 
-  .preloader-counter {
-    bottom: 1.5rem;
-    right: 1.5rem;
-    font-size: 0.75rem;
-  }
+    .preloader-counter {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        font-size: 0.75rem;
+    }
 }

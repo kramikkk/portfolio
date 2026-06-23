@@ -1,75 +1,77 @@
 :root {
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-heading: var(--font-sans);
+    --font-sans:
+        "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+    --font-heading: var(--font-sans);
 
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #121212;
-  --text-primary: #ffffff;
-  --text-secondary: #a3a3a3;
-  --accent-color: #ff5500;
-  --accent-glow: rgba(255, 85, 0, 0.4);
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #121212;
+    --text-primary: #ffffff;
+    --text-secondary: #a3a3a3;
+    --accent-color: #ff5500;
+    --accent-glow: rgba(255, 85, 0, 0.4);
 
-  --border-color: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.1);
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  line-height: 1.5;
+    font-family: var(--font-sans);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    line-height: 1.5;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  background: none;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
 }
 
 .container {
-  max-width: 1700px;
-  margin: 0 auto;
-  padding: 0 5%;
+    max-width: 1700px;
+    margin: 0 auto;
+    padding: 0 5%;
 }
 
 .section-padding {
-  padding: 8rem 0;
+    padding: 8rem 0;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+    background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 3px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-color);
+    background: var(--accent-color);
 }
 
 /* Base Headings */
@@ -79,133 +81,133 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
 .highlight {
-  color: var(--accent-color);
+    color: var(--accent-color);
 }
 
 .about-badge {
-  display: inline-block;
-  padding: 0.5rem 1.25rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  border: 1px solid var(--accent-color);
-  border-radius: 30px;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  margin-bottom: 2rem;
-  background: rgba(255, 85, 0, 0.05);
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    margin-bottom: 2rem;
+    background: rgba(255, 85, 0, 0.05);
 }
 
 .section-title {
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 2rem;
-  letter-spacing: -0.04em;
-  line-height: 1.1;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 2rem;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
 }
 
 @media (min-width: 1440px) {
-  .section-title {
-    font-size: 5rem;
-  }
+    .section-title {
+        font-size: 5rem;
+    }
 }
 
 @media (min-width: 1920px) {
-  .section-title {
-    font-size: 6rem;
-  }
+    .section-title {
+        font-size: 6rem;
+    }
 }
 
 .section-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  max-width: 600px;
-  margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0;
 }
 
 .section-header.center {
-  text-align: center;
+    text-align: center;
 }
 
 .section-header.center .section-subtitle {
-  margin: 0 auto;
+    margin: 0 auto;
 }
 
 .section-header.right {
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .section-header.right .section-subtitle {
-  margin-left: auto;
-  margin-right: 0;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 @media (max-width: 768px) {
-  .section-padding {
-    padding: 4rem 0;
-  }
+    .section-padding {
+        padding: 4rem 0;
+    }
 
-  .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-  }
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
 
-  .section-subtitle {
-    font-size: 0.95rem;
-  }
+    .section-subtitle {
+        font-size: 0.95rem;
+    }
 
-  .about-badge {
-    font-size: 0.6rem;
-    padding: 0.4rem 1rem;
-    margin-bottom: 1.25rem;
-  }
+    .about-badge {
+        font-size: 0.6rem;
+        padding: 0.4rem 1rem;
+        margin-bottom: 1.25rem;
+    }
 
-  .section-header.right {
-    text-align: left;
-    align-items: flex-start;
-  }
+    .section-header.right {
+        text-align: left;
+        align-items: flex-start;
+    }
 
-  .section-header.right .section-subtitle {
-    margin-left: 0;
-  }
+    .section-header.right .section-subtitle {
+        margin-left: 0;
+    }
 }
 
 @media (max-width: 480px) {
-  .section-padding {
-    padding: 3rem 0;
-  }
+    .section-padding {
+        padding: 3rem 0;
+    }
 
-  .section-title {
-    font-size: 2rem;
-  }
+    .section-title {
+        font-size: 2rem;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 
-  .marquee-track {
-    animation: none !important;
-  }
+    .marquee-track {
+        animation: none !important;
+    }
 
-  .scroll-dot {
-    animation: none !important;
-    opacity: 0.6;
-  }
+    .scroll-dot {
+        animation: none !important;
+        opacity: 0.6;
+    }
 }

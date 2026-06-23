@@ -1,438 +1,447 @@
 /* ─── Section shell ────────────────────────────────────────────────── */
 .case-studies {
-  height: 900vh;
-  position: relative;
-  background: var(--bg-primary);
+    height: 900vh;
+    position: relative;
+    background: var(--bg-primary);
 }
 
 /* ─── Sticky viewport ──────────────────────────────────────────────── */
 .horizontal-sticky-wrapper {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* ─── Fixed header overlay — anchored to the right 44% ────────────── */
 .projects-header-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 55%;
-  padding: 3.5rem clamp(2rem, 4vw, 5rem);
-  z-index: 20;
-  pointer-events: none;
-  /* Radial from top-right corner — no hard edges, blends into the image */
-  background: radial-gradient(
-    ellipse 100% 90% at 100% 0%,
-    rgba(8, 8, 8, 0.95) 0%,
-    rgba(8, 8, 8, 0.82) 25%,
-    rgba(8, 8, 8, 0.5)  50%,
-    rgba(8, 8, 8, 0.15) 70%,
-    transparent         88%
-  );
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    padding: 3.5rem clamp(2rem, 4vw, 5rem);
+    z-index: 20;
+    pointer-events: none;
+    /* Radial from top-right corner — no hard edges, blends into the image */
+    background: radial-gradient(
+        ellipse 100% 90% at 100% 0%,
+        rgba(8, 8, 8, 0.95) 0%,
+        rgba(8, 8, 8, 0.82) 25%,
+        rgba(8, 8, 8, 0.5) 50%,
+        rgba(8, 8, 8, 0.15) 70%,
+        transparent 88%
+    );
 }
 
 .header-overlay-inner {
-  pointer-events: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
 }
 
 .projects-section-title {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 /* ─── Horizontal scrolling track ──────────────────────────────────── */
 .projects-track {
-  display: flex;
-  height: 100vh;
-  width: max-content;
-  will-change: transform;
+    display: flex;
+    height: 100vh;
+    width: max-content;
+    will-change: transform;
 }
 
 /* ─── Single full-viewport card — full-bleed image ─────────────────── */
 .project-card-full {
-  width: 100vw;
-  height: 100vh;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
 }
 
 /* ─── Full-bleed background image ───────────────────────────────────── */
 .project-img-full {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform-origin: center center;
-  will-change: transform;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform-origin: center center;
+    will-change: transform;
 }
 
 /* ─── Bottom vignette — cinematic, text-first gradient ──────────────── */
 .project-vignette-bottom {
-  position: absolute;
-  inset: 0;
-  background:
-    /* Sharp floor: keeps the text zone fully readable */
-    linear-gradient(
-      to top,
-      rgba(5, 5, 5, 1)    0%,
-      rgba(5, 5, 5, 0.96) 12%,
-      rgba(5, 5, 5, 0.7)  26%,
-      rgba(5, 5, 5, 0.25) 42%,
-      transparent         62%
+    position: absolute;
+    inset: 0;
+    background:
+    /* Sharp floor: keeps the text zone fully readable */ linear-gradient(
+        to top,
+        rgba(5, 5, 5, 1) 0%,
+        rgba(5, 5, 5, 0.96) 12%,
+        rgba(5, 5, 5, 0.7) 26%,
+        rgba(5, 5, 5, 0.25) 42%,
+        transparent 62%
     );
-  pointer-events: none;
-  z-index: 1;
+    pointer-events: none;
+    z-index: 1;
 }
 
 /* ─── Corner vignette — frames the image like a film still ──────────── */
 .project-vignette-bottom::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 120% 100% at 30% 40%,
-    transparent 45%,
-    rgba(5, 5, 5, 0.35) 100%
-  );
-  pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 120% 100% at 30% 40%,
+        transparent 45%,
+        rgba(5, 5, 5, 0.35) 100%
+    );
+    pointer-events: none;
 }
 
 /* ─── Right vignette — soft edge, no longer needed as hard blocker ──── */
 .project-vignette-right {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to left,
-    rgba(10, 10, 10, 0.6) 0%,
-    rgba(10, 10, 10, 0.3) 22%,
-    transparent           46%
-  );
-  pointer-events: none;
-  z-index: 1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to left,
+        rgba(10, 10, 10, 0.6) 0%,
+        rgba(10, 10, 10, 0.3) 22%,
+        transparent 46%
+    );
+    pointer-events: none;
+    z-index: 1;
 }
 
 /* ─── Ghost number — outline only, anchored to the right overlay area ── */
 .project-ghost-num {
-  position: absolute;
-  right: -2%;
-  bottom: -12%;
-  font-size: clamp(18rem, 30vw, 36rem);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.06em;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.13);
-  pointer-events: none;
-  user-select: none;
-  z-index: 2;
+    position: absolute;
+    right: -2%;
+    bottom: -12%;
+    font-size: clamp(18rem, 30vw, 36rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.06em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.13);
+    pointer-events: none;
+    user-select: none;
+    z-index: 2;
 }
 
 /* ─── Bottom-left counter  01 — 08 ─────────────────────────────────── */
 .image-counter {
-  position: absolute;
-  bottom: 2.5rem;
-  right: 44%;
-  margin-right: 2.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  z-index: 10;
+    position: absolute;
+    bottom: 2.5rem;
+    right: 44%;
+    margin-right: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    z-index: 10;
 }
 
 .counter-current {
-  color: var(--accent-color);
+    color: var(--accent-color);
 }
 
 .counter-sep {
-  opacity: 0.4;
+    opacity: 0.4;
 }
 
 /* ─── Details overlay — bottom-left, left 56% of card ──────────────── */
 .project-details-panel {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 56%;
-  padding: clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 3.5rem) clamp(3rem, 5vh, 4.5rem);
-  z-index: 5;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 56%;
+    padding: clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 3.5rem)
+        clamp(3rem, 5vh, 4.5rem);
+    z-index: 5;
 }
 
 /* Actual content */
 .project-details-content {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.6rem, 1.2vh, 1rem);
-  max-width: 560px;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.6rem, 1.2vh, 1rem);
+    max-width: 560px;
+    width: 100%;
 }
 
 /* ─── Meta: role ──────────────────────────────────────────────────── */
 .project-meta-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .project-role-tag {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
 }
 
 /* ─── Tech pills ──────────────────────────────────────────────────── */
 .project-tech-tags {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .tech-pill {
-  font-size: 0.68rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.3rem 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 3px;
-  color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.04);
-  transition: border-color 0.3s ease, color 0.3s ease;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.04);
+    transition:
+        border-color 0.3s ease,
+        color 0.3s ease;
 }
 
 .project-card-full:hover .tech-pill {
-  border-color: rgba(255, 85, 0, 0.3);
-  color: rgba(255, 255, 255, 0.75);
+    border-color: rgba(255, 85, 0, 0.3);
+    color: rgba(255, 255, 255, 0.75);
 }
 
 /* ─── Project title ───────────────────────────────────────────────── */
 .project-title-hero {
-  font-size: clamp(2.8rem, 4.5vw, 5.5rem);
-  font-weight: 800;
-  line-height: 1;
-  margin: 0.15rem 0 0;
-  color: #fff;
-  letter-spacing: -0.04em;
+    font-size: clamp(2.8rem, 4.5vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1;
+    margin: 0.15rem 0 0;
+    color: #fff;
+    letter-spacing: -0.04em;
 }
 
 /* ─── Description ─────────────────────────────────────────────────── */
 .project-desc {
-  font-size: clamp(0.875rem, 1vw, 1rem);
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.65);
-  max-width: 46ch;
-  margin: 0;
+    font-size: clamp(0.875rem, 1vw, 1rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 46ch;
+    margin: 0;
 }
 
 /* ─── Thin rule above CTAs ────────────────────────────────────────── */
 .project-divider {
-  width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 0.25rem 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0.25rem 0;
 }
 
 /* ─── CTAs ────────────────────────────────────────────────────────── */
 .project-actions {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-top: 0.15rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 0.15rem;
 }
 
 .cta-primary,
 .cta-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.25s ease;
 }
 
 .cta-primary {
-  color: rgba(255, 255, 255, 0.75);
-  letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.01em;
 }
 
 .cta-primary:hover {
-  color: #fff;
+    color: #fff;
 }
 
 .cta-secondary {
-  color: var(--accent-color);
-  padding: 0.55rem 1.25rem;
-  border: 1px solid var(--accent-color);
-  border-radius: 6px;
-  background: rgba(255, 85, 0, 0.04);
-  transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    color: var(--accent-color);
+    padding: 0.55rem 1.25rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    background: rgba(255, 85, 0, 0.04);
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        color 0.3s ease;
 }
 
 .cta-secondary:hover {
-  background: var(--accent-color);
-  color: #fff;
-  box-shadow: 0 0 24px rgba(255, 85, 0, 0.35);
+    background: var(--accent-color);
+    color: #fff;
+    box-shadow: 0 0 24px rgba(255, 85, 0, 0.35);
 }
 
 /* ─── Pagination ──────────────────────────────────────────────────── */
 .project-pagination {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 100px;
-  width: fit-content;
-  backdrop-filter: blur(8px);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 100px;
+    width: fit-content;
+    backdrop-filter: blur(8px);
 }
 
 .pagination-dot {
-  height: 5px;
-  border-radius: 3px;
-  flex-shrink: 0;
+    height: 5px;
+    border-radius: 3px;
+    flex-shrink: 0;
 }
 
 /* ─── Responsive ──────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .projects-header-overlay {
-    width: 60%;
-  }
+    .projects-header-overlay {
+        width: 60%;
+    }
 
-  .project-details-panel {
-    width: 56%;
-  }
+    .project-details-panel {
+        width: 56%;
+    }
 
-  .image-counter {
-    right: 50%;
-  }
+    .image-counter {
+        right: 50%;
+    }
 
-  .project-vignette-right {
-    background: linear-gradient(
-      to left,
-      rgba(10, 10, 10, 0.65) 0%,
-      rgba(10, 10, 10, 0.3) 25%,
-      transparent 48%
-    );
-  }
+    .project-vignette-right {
+        background: linear-gradient(
+            to left,
+            rgba(10, 10, 10, 0.65) 0%,
+            rgba(10, 10, 10, 0.3) 25%,
+            transparent 48%
+        );
+    }
 }
 
 @media (max-width: 768px) {
-  .case-studies {
-    height: 1000vh;
-  }
+    .case-studies {
+        height: 1000vh;
+    }
 
-  .projects-header-overlay {
-    width: 100%;
-    padding: 1.25rem 5%;
-    background: linear-gradient(to bottom, var(--bg-primary) 70%, transparent);
-  }
+    .projects-header-overlay {
+        width: 100%;
+        padding: 1.25rem 5%;
+        background: linear-gradient(
+            to bottom,
+            var(--bg-primary) 70%,
+            transparent
+        );
+    }
 
-  .header-overlay-inner {
-    align-items: flex-start;
-    text-align: left;
-  }
+    .header-overlay-inner {
+        align-items: flex-start;
+        text-align: left;
+    }
 
-  .projects-section-title {
-    font-size: 1.75rem;
-    margin-bottom: 0.75rem;
-  }
+    .projects-section-title {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
 
-  .project-details-panel {
-    width: 100%;
-    padding: 1.25rem 5% 4.5rem;
-  }
+    .project-details-panel {
+        width: 100%;
+        padding: 1.25rem 5% 4.5rem;
+    }
 
-  .project-details-content {
-    gap: 0.5rem;
-    max-width: 100%;
-  }
+    .project-details-content {
+        gap: 0.5rem;
+        max-width: 100%;
+    }
 
-  .project-vignette-bottom {
-    background: linear-gradient(
-      to top,
-      rgba(5, 5, 5, 1)    0%,
-      rgba(5, 5, 5, 0.92) 18%,
-      rgba(5, 5, 5, 0.6)  38%,
-      rgba(5, 5, 5, 0.15) 58%,
-      transparent         78%
-    );
-  }
+    .project-vignette-bottom {
+        background: linear-gradient(
+            to top,
+            rgba(5, 5, 5, 1) 0%,
+            rgba(5, 5, 5, 0.92) 18%,
+            rgba(5, 5, 5, 0.6) 38%,
+            rgba(5, 5, 5, 0.15) 58%,
+            transparent 78%
+        );
+    }
 
-  .project-vignette-right {
-    display: none;
-  }
+    .project-vignette-right {
+        display: none;
+    }
 
-  .project-ghost-num {
-    font-size: 38vw;
-    right: -4%;
-    bottom: -4%;
-    -webkit-text-stroke-width: 1px;
-  }
+    .project-ghost-num {
+        font-size: 38vw;
+        right: -4%;
+        bottom: -4%;
+        -webkit-text-stroke-width: 1px;
+    }
 
-  .project-title-hero {
-    font-size: clamp(1.75rem, 7vw, 3rem);
-  }
+    .project-title-hero {
+        font-size: clamp(1.75rem, 7vw, 3rem);
+    }
 
-  .project-desc {
-    font-size: 0.875rem;
-    max-width: 100%;
-  }
+    .project-desc {
+        font-size: 0.875rem;
+        max-width: 100%;
+    }
 
-  .image-counter {
-    right: auto;
-    left: 5%;
-    margin-right: 0;
-    bottom: 1.5rem;
-  }
+    .image-counter {
+        right: auto;
+        left: 5%;
+        margin-right: 0;
+        bottom: 1.5rem;
+    }
 
-  .cta-primary,
-  .cta-secondary {
-    min-height: 44px;
-  }
+    .cta-primary,
+    .cta-secondary {
+        min-height: 44px;
+    }
 }
 
 @media (max-width: 480px) {
-  .projects-header-overlay {
-    padding: 1rem 5%;
-  }
+    .projects-header-overlay {
+        padding: 1rem 5%;
+    }
 
-  .projects-section-title {
-    font-size: 1.5rem;
-  }
+    .projects-section-title {
+        font-size: 1.5rem;
+    }
 
-  .project-title-hero {
-    font-size: clamp(1.5rem, 8vw, 2rem);
-  }
+    .project-title-hero {
+        font-size: clamp(1.5rem, 8vw, 2rem);
+    }
 
-  .project-actions {
-    gap: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    .project-actions {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-  .cta-secondary {
-    width: fit-content;
-  }
+    .cta-secondary {
+        width: fit-content;
+    }
 
-  .tech-pill {
-    font-size: 0.62rem;
-    padding: 0.25rem 0.6rem;
-  }
+    .tech-pill {
+        font-size: 0.62rem;
+        padding: 0.25rem 0.6rem;
+    }
 }

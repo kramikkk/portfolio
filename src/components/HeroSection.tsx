@@ -1,8 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { Linkedin, Github, Instagram } from 'lucide-react';
-import { useMotionValue, animate } from 'framer-motion';
-import './HeroSection.css';
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion";
+import { Linkedin, Github, Instagram } from "lucide-react";
+import { useMotionValue, animate } from "framer-motion";
+import "./HeroSection.css";
 
 interface CounterProps {
   value: number;
@@ -23,8 +28,6 @@ const Counter: React.FC<CounterProps> = ({ value, trigger }) => {
   return <motion.span>{rounded}</motion.span>;
 };
 
-
-
 interface HeroParallaxProps {
   totalFrames?: number;
 }
@@ -37,7 +40,7 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
   // Custom scroll tracking that we map to our frames
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"]
+    offset: ["start start", "end end"],
   });
 
   const [images, setImages] = useState<HTMLImageElement[]>([]);
@@ -50,7 +53,7 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
 
     for (let i = 0; i < totalFrames; i++) {
       const img = new Image();
-      img.src = `/frames/frame_${i.toString().padStart(3, '0')}_delay-0.041s.webp`;
+      img.src = `/frames/frame_${i.toString().padStart(3, "0")}_delay-0.041s.webp`;
       img.onload = () => {
         loadedCount++;
         loadedImages[i] = img;
@@ -64,14 +67,15 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
       img.onerror = () => {
         loadedCount++;
         loadedImages[i] = new Image();
-      }
+      };
     }
   }, [totalFrames]);
 
   const renderFrame = (index: number, imgArray: HTMLImageElement[]) => {
-    if (!canvasRef.current || !imgArray[index] || !imgArray[index].complete) return;
+    if (!canvasRef.current || !imgArray[index] || !imgArray[index].complete)
+      return;
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     // Use viewport size for canvas
@@ -107,7 +111,7 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
       // mapping 0 -> 1 progress to 0 -> totalFrames - 1
       const frameIndex = Math.min(
         totalFrames - 1,
-        Math.max(0, Math.floor(latest * totalFrames))
+        Math.max(0, Math.floor(latest * totalFrames)),
       );
       currentFrameRef.current = frameIndex;
       requestAnimationFrame(() => renderFrame(frameIndex, images));
@@ -116,39 +120,87 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
     const handleResize = () => {
       requestAnimationFrame(() => renderFrame(currentFrameRef.current, images));
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       unsubscribe();
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, [scrollYProgress, images, totalFrames]);
 
   // Parallax Text Scrolling Transforms
   // Segment 1: Initial Identity (0% - 25%)
-  const leftTextY = useTransform(scrollYProgress, [0, 0.25], prefersReducedMotion ? [0, 0] : [0, -250]);
+  const leftTextY = useTransform(
+    scrollYProgress,
+    [0, 0.25],
+    prefersReducedMotion ? [0, 0] : [0, -250],
+  );
   const leftTextOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
-  const rightTextY = useTransform(scrollYProgress, [0, 0.25], prefersReducedMotion ? [0, 0] : [0, -450]);
+  const rightTextY = useTransform(
+    scrollYProgress,
+    [0, 0.25],
+    prefersReducedMotion ? [0, 0] : [0, -450],
+  );
   const rightTextOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
-  const bottomSocialsY = useTransform(scrollYProgress, [0, 0.2], prefersReducedMotion ? [0, 0] : [0, 100]);
+  const bottomSocialsY = useTransform(
+    scrollYProgress,
+    [0, 0.2],
+    prefersReducedMotion ? [0, 0] : [0, 100],
+  );
   const bottomSocialsOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
   // Segment 2: Philosophy / Mid-Blocks (25% - 60%)
-  const midLeftY = useTransform(scrollYProgress, [0.25, 0.55], prefersReducedMotion ? [0, 0] : [150, -150]);
-  const midLeftOpacity = useTransform(scrollYProgress, [0.25, 0.3, 0.45, 0.55], [0, 1, 1, 0]);
+  const midLeftY = useTransform(
+    scrollYProgress,
+    [0.25, 0.55],
+    prefersReducedMotion ? [0, 0] : [150, -150],
+  );
+  const midLeftOpacity = useTransform(
+    scrollYProgress,
+    [0.25, 0.3, 0.45, 0.55],
+    [0, 1, 1, 0],
+  );
 
-  const midRightY = useTransform(scrollYProgress, [0.3, 0.6], prefersReducedMotion ? [0, 0] : [100, -250]);
-  const midRightOpacity = useTransform(scrollYProgress, [0.3, 0.35, 0.5, 0.6], [0, 1, 1, 0]);
+  const midRightY = useTransform(
+    scrollYProgress,
+    [0.3, 0.6],
+    prefersReducedMotion ? [0, 0] : [100, -250],
+  );
+  const midRightOpacity = useTransform(
+    scrollYProgress,
+    [0.3, 0.35, 0.5, 0.6],
+    [0, 1, 1, 0],
+  );
 
   // Segment 3: About / Bio Integration (60% - 100%)
-  const aboutDarkOverlayOpacity = useTransform(scrollYProgress, [0.55, 0.75], [0, 0.35]);
+  const aboutDarkOverlayOpacity = useTransform(
+    scrollYProgress,
+    [0.55, 0.75],
+    [0, 0.35],
+  );
 
-  const aboutY = useTransform(scrollYProgress, [0.6, 0.95], prefersReducedMotion ? [0, 0] : [150, -50]);
-  const aboutOpacity = useTransform(scrollYProgress, [0.6, 0.75, 0.9, 1], [0, 1, 1, 1]);
-  const aboutBgTextX = useTransform(scrollYProgress, [0.6, 1], prefersReducedMotion ? ["0%", "0%"] : ["-10%", "5%"]);
-  const aboutBgTextXReverse = useTransform(scrollYProgress, [0.6, 1], prefersReducedMotion ? ["0%", "0%"] : ["10%", "-5%"]);
+  const aboutY = useTransform(
+    scrollYProgress,
+    [0.6, 0.95],
+    prefersReducedMotion ? [0, 0] : [150, -50],
+  );
+  const aboutOpacity = useTransform(
+    scrollYProgress,
+    [0.6, 0.75, 0.9, 1],
+    [0, 1, 1, 1],
+  );
+  const aboutBgTextX = useTransform(
+    scrollYProgress,
+    [0.6, 1],
+    prefersReducedMotion ? ["0%", "0%"] : ["-10%", "5%"],
+  );
+  const aboutBgTextXReverse = useTransform(
+    scrollYProgress,
+    [0.6, 1],
+    prefersReducedMotion ? ["0%", "0%"] : ["10%", "-5%"],
+  );
 
   // Trigger for count-up animation
   const [statsTriggered, setStatsTriggered] = useState(false);
@@ -167,7 +219,10 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
       <motion.div className="sticky-hero">
         <canvas className="hero-canvas" ref={canvasRef} />
         <div className="hero-overlay"></div>
-        <motion.div className="hero-about-dark-overlay" style={{ opacity: aboutDarkOverlayOpacity }} />
+        <motion.div
+          className="hero-about-dark-overlay"
+          style={{ opacity: aboutDarkOverlayOpacity }}
+        />
 
         {/* Left Side Text Block */}
         <motion.div
@@ -187,7 +242,7 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            style={{ cursor: 'default' }}
+            style={{ cursor: "default" }}
           >
             <span>Mark</span>
             <br className="desktop-break" />
@@ -232,11 +287,34 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <h2 className="subheadline">
-              <span className='highlight' >Codename:</span> Kramik
+              <span className="highlight">Codename:</span> Kramik
             </h2>
             <div className="code-quote">
               {/* No leading whitespace inside <pre> — each span starts at column 0 */}
-              <pre className="code-quote-body"><span className="cq-keyword">const</span> <span className="cq-var">dev</span> <span className="cq-op">=</span> <span className="cq-keyword">new</span> <span className="cq-fn">Kramik</span>()<span className="cq-op">;</span>{'\n'}<span className="cq-var">dev</span><span className="cq-op">.</span><span className="cq-fn">build</span>(<span className="cq-string">"ideas"</span>)<span className="cq-op">;</span>{'\n'}<span className="cq-var">dev</span><span className="cq-op">.</span><span className="cq-fn">ship</span>(<span className="cq-string">"products"</span>)<span className="cq-op">;</span>{'\n'}<span className="cq-comment">// repeat until the world notices.</span></pre>
+              <pre className="code-quote-body">
+                <span className="cq-keyword">const</span>{" "}
+                <span className="cq-var">dev</span>{" "}
+                <span className="cq-op">=</span>{" "}
+                <span className="cq-keyword">new</span>{" "}
+                <span className="cq-fn">Kramik</span>()
+                <span className="cq-op">;</span>
+                {"\n"}
+                <span className="cq-var">dev</span>
+                <span className="cq-op">.</span>
+                <span className="cq-fn">build</span>(
+                <span className="cq-string">"ideas"</span>)
+                <span className="cq-op">;</span>
+                {"\n"}
+                <span className="cq-var">dev</span>
+                <span className="cq-op">.</span>
+                <span className="cq-fn">ship</span>(
+                <span className="cq-string">"products"</span>)
+                <span className="cq-op">;</span>
+                {"\n"}
+                <span className="cq-comment">
+                  // repeat until the world notices.
+                </span>
+              </pre>
             </div>
           </motion.div>
         </motion.div>
@@ -253,21 +331,42 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
                 className="scroll-dot"
                 animate={{
                   y: [0, 20, 0],
-                  opacity: [0.3, 1, 0.3]
+                  opacity: [0.3, 1, 0.3],
                 }}
                 transition={{
                   duration: 2,
                   repeat: Infinity,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
               />
             </div>
           </div>
 
           <div className="bottom-socials">
-            <a href="https://www.linkedin.com/in/kramikkk/" target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={20} /></a>
-            <a href="https://github.com/kramikkk" target="_blank" rel="noopener noreferrer" className="social-icon"><Github size={20} /></a>
-            <a href="https://www.instagram.com/kramik_/" target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={20} /></a>
+            <a
+              href="https://www.linkedin.com/in/kramikkk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+            >
+              <Linkedin size={20} />
+            </a>
+            <a
+              href="https://github.com/kramikkk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+            >
+              <Github size={20} />
+            </a>
+            <a
+              href="https://www.instagram.com/kramik_/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+            >
+              <Instagram size={20} />
+            </a>
           </div>
         </motion.div>
 
@@ -304,44 +403,59 @@ const HeroSection: React.FC<HeroParallaxProps> = ({ totalFrames = 144 }) => {
           id="about"
           style={{ y: aboutY, opacity: aboutOpacity }}
         >
-        <div className="hero-about-container">
-          {/* Upper Left background text */}
-          <motion.div className="about-bg-text-hero top-left-bg" style={{ x: aboutBgTextX }}>
-            <span className="outline-text-hero">KRAMIK</span>
-          </motion.div>
+          <div className="hero-about-container">
+            {/* Upper Left background text */}
+            <motion.div
+              className="about-bg-text-hero top-left-bg"
+              style={{ x: aboutBgTextX }}
+            >
+              <span className="outline-text-hero">KRAMIK</span>
+            </motion.div>
 
-          {/* Bottom Right background text (Mirrored) */}
-          <motion.div className="about-bg-text-hero bottom-right-bg" style={{ x: aboutBgTextXReverse }}>
-            <span className="outline-text-hero">KRAMIK</span>
-          </motion.div>
+            {/* Bottom Right background text (Mirrored) */}
+            <motion.div
+              className="about-bg-text-hero bottom-right-bg"
+              style={{ x: aboutBgTextXReverse }}
+            >
+              <span className="outline-text-hero">KRAMIK</span>
+            </motion.div>
 
-          <div className="about-hero-center-content">
-            <div className="about-hero-text">
-              <div className="about-badge">ABOUT ME</div>
-              <h2 className="about-hero-title">Mark Jeric B. <span className="highlight">Exconde</span></h2>
-              <p className="about-hero-body">
-                I’m a 22-year-old Computer Engineering student at Laguna State Polytechnic University - San Pablo City Campus, currently living in Tiaong, Quezon, Philippines.
-              </p>
+            <div className="about-hero-center-content">
+              <div className="about-hero-text">
+                <div className="about-badge">ABOUT ME</div>
+                <h2 className="about-hero-title">
+                  Mark Jeric B. <span className="highlight">Exconde</span>
+                </h2>
+                <p className="about-hero-body">
+                  I’m a 22-year-old BS Computer Engineering Graduate at Laguna
+                  State Polytechnic University - San Pablo City Campus,
+                  currently living in Tiaong, Quezon, Philippines.
+                </p>
 
-              <div className="about-hero-stats">
-                <div className="hero-stat-item">
-                  <span className="hero-stat-num"><Counter value={3} trigger={statsTriggered} />+</span>
-                  <span className="hero-stat-label">Years Coding</span>
-                </div>
-                <div className="hero-stat-item">
-                  <span className="hero-stat-num"><Counter value={8} trigger={statsTriggered} />+</span>
-                  <span className="hero-stat-label">Live Projects</span>
-                </div>
-                <div className="hero-stat-item">
-                  <span className="hero-stat-num"><Counter value={3} trigger={statsTriggered} />+</span>
-                  <span className="hero-stat-label">Awards</span>
+                <div className="about-hero-stats">
+                  <div className="hero-stat-item">
+                    <span className="hero-stat-num">
+                      <Counter value={3} trigger={statsTriggered} />+
+                    </span>
+                    <span className="hero-stat-label">Years Coding</span>
+                  </div>
+                  <div className="hero-stat-item">
+                    <span className="hero-stat-num">
+                      <Counter value={8} trigger={statsTriggered} />+
+                    </span>
+                    <span className="hero-stat-label">Live Projects</span>
+                  </div>
+                  <div className="hero-stat-item">
+                    <span className="hero-stat-num">
+                      <Counter value={3} trigger={statsTriggered} />+
+                    </span>
+                    <span className="hero-stat-label">Awards</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         </motion.div>
-
       </motion.div>
     </div>
   );

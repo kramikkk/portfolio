@@ -1,41 +1,71 @@
-import { motion } from 'framer-motion';
-import { Linkedin, Github, Instagram, Youtube, ArrowUpRight, FileText } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import './Footer.css';
+import { motion, type MotionProps } from "framer-motion";
+import {
+  Linkedin,
+  Github,
+  Instagram,
+  Youtube,
+  ArrowUpRight,
+  FileText,
+} from "lucide-react";
+import { useState, useEffect } from "react";
+import "./Footer.css";
 
 const Footer = () => {
-  const [time, setTime] = useState(new Date().toLocaleTimeString('en-US', {
-    timeZone: 'Asia/Manila',
-    hour12: true,
-    hour: 'numeric',
-    minute: '2-digit'
-  }));
+  const [time, setTime] = useState(
+    new Date().toLocaleTimeString("en-US", {
+      timeZone: "Asia/Manila",
+      hour12: true,
+      hour: "numeric",
+      minute: "2-digit",
+    }),
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTime(new Date().toLocaleTimeString('en-US', {
-        timeZone: 'Asia/Manila',
-        hour12: true,
-        hour: 'numeric',
-        minute: '2-digit'
-      }));
+      setTime(
+        new Date().toLocaleTimeString("en-US", {
+          timeZone: "Asia/Manila",
+          hour12: true,
+          hour: "numeric",
+          minute: "2-digit",
+        }),
+      );
     }, 1000);
     return () => clearInterval(timer);
   }, []);
 
   const socialLinks = [
-    { icon: <Github size={20} />, label: 'GitHub', url: 'https://github.com/kramikkk' },
-    { icon: <Linkedin size={20} />, label: 'LinkedIn', url: 'https://www.linkedin.com/in/kramikkk/' },
-    { icon: <Instagram size={20} />, label: 'Instagram', url: 'https://www.instagram.com/kramik_/' },
-    { icon: <Youtube size={20} />, label: 'YouTube', url: 'https://www.youtube.com/@kramik-code' }
+    {
+      icon: <Github size={20} />,
+      label: "GitHub",
+      url: "https://github.com/kramikkk",
+    },
+    {
+      icon: <Linkedin size={20} />,
+      label: "LinkedIn",
+      url: "https://www.linkedin.com/in/kramikkk/",
+    },
+    {
+      icon: <Instagram size={20} />,
+      label: "Instagram",
+      url: "https://www.instagram.com/kramik_/",
+    },
+    {
+      icon: <Youtube size={20} />,
+      label: "YouTube",
+      url: "https://www.youtube.com/@kramik-code",
+    },
   ];
 
   const fadeUp = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }
-  };
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+  } satisfies Pick<
+    MotionProps,
+    "initial" | "whileInView" | "viewport" | "transition"
+  >;
 
   return (
     <footer className="footer" id="contact">
@@ -45,7 +75,9 @@ const Footer = () => {
         <div className="footer-top">
           <motion.div {...fadeUp} className="footer-cta-block">
             <span className="footer-pretitle">HAVE A PROJECT IN MIND?</span>
-            <h2 className="footer-big-title">LET'S <span className="highlight">CREATE</span></h2>
+            <h2 className="footer-big-title">
+              LET'S <span className="highlight">CREATE</span>
+            </h2>
 
             <div className="footer-actions">
               <motion.a
@@ -99,7 +131,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-link-item"
-                  whileHover={{ x: 5, color: 'var(--accent-color)' }}
+                  whileHover={{ x: 5, color: "var(--accent-color)" }}
                 >
                   {link.icon}
                   <span>{link.label}</span>
@@ -129,7 +161,9 @@ const Footer = () => {
             <p>&copy; {new Date().getFullYear()} Mark Jeric B. Exconde</p>
           </div>
           <div className="footer-credit">
-            <p>Designed & Built by <span className="highlight">Kramik</span></p>
+            <p>
+              Designed & Built by <span className="highlight">Kramik</span>
+            </p>
           </div>
         </div>
       </div>

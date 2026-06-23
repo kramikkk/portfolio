@@ -1,7 +1,7 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
-import './ProjectsSection.css';
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import "./ProjectsSection.css";
 
 interface Project {
   id: number;
@@ -17,79 +17,87 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: 'Book-N-Go',
-    role: 'Lead Full-Stack Developer',
-    description: 'Professional reservation system for small businesses, featuring complex scheduling logic and high-concurrency handling.',
-    image: '/images/bookngo.png',
-    tech: ['TypeScript', 'React', 'Tailwind', 'Next.js'],
-    demoUrl: 'https://book-n-go-system.vercel.app/',
-    projectUrl: 'https://github.com/kramikkk/book-n-go'
+    title: "Book-N-Go",
+    role: "Lead Full-Stack Developer",
+    description:
+      "Professional reservation system for small businesses, featuring complex scheduling logic and high-concurrency handling.",
+    image: "/images/bookngo.png",
+    tech: ["TypeScript", "React", "Tailwind", "Next.js"],
+    demoUrl: "https://book-n-go-system.vercel.app/",
+    projectUrl: "https://github.com/kramikkk/book-n-go",
   },
   {
     id: 2,
-    title: 'Smart Shoe Care Machine',
-    role: 'System Architect & IoT Lead',
-    description: 'An automated IoT solution for shoe cleaning, sterilization, and drying with Google GenAI material classification.',
-    image: '/images/shoes.png',
-    tech: ['Next.js', 'Google GenAI', 'ESP32', 'WebSockets'],
-    demoUrl: 'https://smart-shoe-care-machine.onrender.com/',
-    projectUrl: 'https://github.com/kramikkk/smart-shoe-care-machine'
+    title: "Smart Shoe Care Machine",
+    role: "System Architect & IoT Lead",
+    description:
+      "An automated IoT solution for shoe cleaning, sterilization, and drying with Google GenAI material classification.",
+    image: "/images/shoes.png",
+    tech: ["Next.js", "Google GenAI", "ESP32", "WebSockets"],
+    demoUrl: "https://smart-shoe-care-machine.onrender.com/",
+    projectUrl: "https://github.com/kramikkk/smart-shoe-care-machine",
   },
   {
     id: 3,
-    title: 'VitaLink AI',
-    role: 'Full-Stack & Hardware Engineer',
-    description: 'A full-stack wellness monitoring system featuring real-time telemetry from ESP32 sensors and Next.js analytics.',
-    image: '/images/vitalink.png',
-    tech: ['React', 'Next.js', 'C++', 'Node.js'],
-    demoUrl: 'https://vitalink-ai-frontend.vercel.app/',
-    projectUrl: 'https://github.com/kramikkk/vitalink-ai'
+    title: "VitaLink AI",
+    role: "Full-Stack & Hardware Engineer",
+    description:
+      "A full-stack wellness monitoring system featuring real-time telemetry from ESP32 sensors and Next.js analytics.",
+    image: "/images/vitalink.png",
+    tech: ["React", "Next.js", "C++", "Node.js"],
+    demoUrl: "https://vitalink-ai-frontend.vercel.app/",
+    projectUrl: "https://github.com/kramikkk/vitalink-ai",
   },
   {
     id: 4,
-    title: 'Conan AI Cam',
-    role: 'AI & Embedded Developer',
-    description: 'Embedded vision system powered by TinyML for real-time object detection on ESP32-CAM with TFT display.',
-    image: '/images/conan.png',
-    tech: ['C++', 'TinyML', 'ESP32-CAM', 'Computer Vision'],
-    projectUrl: 'https://github.com/kramikkk/conan-ai-cam'
+    title: "Conan AI Cam",
+    role: "AI & Embedded Developer",
+    description:
+      "Embedded vision system powered by TinyML for real-time object detection on ESP32-CAM with TFT display.",
+    image: "/images/conan.png",
+    tech: ["C++", "TinyML", "ESP32-CAM", "Computer Vision"],
+    projectUrl: "https://github.com/kramikkk/conan-ai-cam",
   },
   {
     id: 5,
-    title: 'SLT App',
-    role: 'Mobile & ML Developer',
-    description: 'Accessibility-focused mobile app providing real-time Sign Language to Text and Text to Sign translation.',
-    image: '/images/slt.png',
-    tech: ['Kotlin', 'Android', 'TensorFlow', 'Jetpack Compose'],
-    projectUrl: 'https://github.com/kramikkk/slt-app'
+    title: "SLT App",
+    role: "Mobile & ML Developer",
+    description:
+      "Accessibility-focused mobile app providing real-time Sign Language to Text and Text to Sign translation.",
+    image: "/images/slt.png",
+    tech: ["Kotlin", "Android", "TensorFlow", "Jetpack Compose"],
+    projectUrl: "https://github.com/kramikkk/slt-app",
   },
   {
     id: 6,
-    title: 'Stack Wars',
-    role: 'Hardware & Game Developer',
-    description: 'Competitive two-player LED matrix game with custom joystick hardware and Arduino-based real-time logic.',
-    image: '/images/stack.png',
-    tech: ['C++', 'Arduino', 'LED Matrix', 'Hardware Design'],
-    projectUrl: 'https://github.com/kramikkk/stack-wars'
+    title: "Stack Wars",
+    role: "Hardware & Game Developer",
+    description:
+      "Competitive two-player LED matrix game with custom joystick hardware and Arduino-based real-time logic.",
+    image: "/images/stack.png",
+    tech: ["C++", "Arduino", "LED Matrix", "Hardware Design"],
+    projectUrl: "https://github.com/kramikkk/stack-wars",
   },
   {
     id: 7,
-    title: 'COCO Robot',
-    role: 'Robotics Engineer',
-    description: 'Autonomous smart robot featuring intelligent navigation, obstacle avoidance, and sensor-based environmental interaction.',
-    image: '/images/robot.png',
-    tech: ['C++', 'Arduino', 'Robotics', 'Sensor Fusion'],
-    projectUrl: 'https://github.com/kramikkk/coco'
+    title: "COCO Robot",
+    role: "Robotics Engineer",
+    description:
+      "Autonomous smart robot featuring intelligent navigation, obstacle avoidance, and sensor-based environmental interaction.",
+    image: "/images/robot.png",
+    tech: ["C++", "Arduino", "Robotics", "Sensor Fusion"],
+    projectUrl: "https://github.com/kramikkk/coco",
   },
   {
     id: 8,
-    title: 'Smart Face Shield',
-    role: 'IoT Developer',
-    description: 'Wearable health-tech device with non-contact infrared temperature scanning and ultrasonic proximity monitoring.',
-    image: '/images/shield.png',
-    tech: ['Arduino', 'C++', 'IoT', 'Health Tech'],
-    projectUrl: 'https://github.com/kramikkk/smart-face-shield'
-  }
+    title: "Smart Face Shield",
+    role: "IoT Developer",
+    description:
+      "Wearable health-tech device with non-contact infrared temperature scanning and ultrasonic proximity monitoring.",
+    image: "/images/shield.png",
+    tech: ["Arduino", "C++", "IoT", "Health Tech"],
+    projectUrl: "https://github.com/kramikkk/smart-face-shield",
+  },
 ];
 
 const TOTAL = projects.length;
@@ -101,13 +109,12 @@ const ProjectsSection = () => {
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    ['0%', `-${((TOTAL - 1) / TOTAL) * 100}%`]
+    ["0%", `-${((TOTAL - 1) / TOTAL) * 100}%`],
   );
 
   return (
     <section ref={containerRef} className="case-studies" id="work">
       <div className="horizontal-sticky-wrapper">
-
         {/* ── Fixed header overlay — right 44% ── */}
         <div className="projects-header-overlay">
           <motion.div
@@ -141,7 +148,6 @@ const ProjectsSection = () => {
         <motion.div style={{ x }} className="projects-track">
           {projects.map((project, index) => (
             <article key={project.id} className="project-card-full">
-
               {/* Full-bleed background image */}
               <motion.img
                 src={project.image}
@@ -159,17 +165,17 @@ const ProjectsSection = () => {
 
               {/* Ghost number as background texture */}
               <div className="project-ghost-num" aria-hidden="true">
-                {String(index + 1).padStart(2, '0')}
+                {String(index + 1).padStart(2, "0")}
               </div>
 
               {/* Bottom-left counter */}
               <div className="image-counter">
                 <span className="counter-current">
-                  {String(index + 1).padStart(2, '0')}
+                  {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="counter-sep">—</span>
                 <span className="counter-total">
-                  {String(TOTAL).padStart(2, '0')}
+                  {String(TOTAL).padStart(2, "0")}
                 </span>
               </div>
 
@@ -183,8 +189,10 @@ const ProjectsSection = () => {
 
                   {/* Tech tags */}
                   <div className="project-tech-tags">
-                    {project.tech.map(t => (
-                      <span key={t} className="tech-pill">{t}</span>
+                    {project.tech.map((t) => (
+                      <span key={t} className="tech-pill">
+                        {t}
+                      </span>
                     ))}
                   </div>
 
@@ -225,11 +233,9 @@ const ProjectsSection = () => {
                   </div>
                 </div>
               </div>
-
             </article>
           ))}
         </motion.div>
-
       </div>
     </section>
   );
@@ -240,16 +246,16 @@ const ProjectPaginationDot = ({
   progress,
   range,
 }: {
-  progress: ReturnType<typeof useScroll>['scrollYProgress'];
+  progress: ReturnType<typeof useScroll>["scrollYProgress"];
   range: [number, number];
 }) => {
-  const width = useTransform(progress, range, ['8px', '28px'], { clamp: true });
+  const width = useTransform(progress, range, ["8px", "28px"], { clamp: true });
   const opacity = useTransform(progress, range, [0.25, 1], { clamp: true });
   const bg = useTransform(
     progress,
     range,
-    ['rgba(255,255,255,0.2)', 'var(--accent-color)'],
-    { clamp: true }
+    ["rgba(255,255,255,0.2)", "var(--accent-color)"],
+    { clamp: true },
   );
 
   return (
