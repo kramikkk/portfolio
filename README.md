@@ -1,8 +1,10 @@
 # kramik-portfolio
 
-Personal portfolio site for Mark Jeric Exconde (Kramik) — Full-Stack Developer and Computer Engineering student.
+This is Mark Jeric Exconde's (Kramik) old main portfolio and first portfolio site. The details on this website may no longer be up to date because it is no longer maintained.
 
-**Live:** [kramik-portfolio.vercel.app](https://kramik-portfolio.vercel.app/)
+**Current main website:** [www.mrkjrcxcnd.com](https://www.mrkjrcxcnd.com/)
+
+**Archived site:** [kramik-portfolio.vercel.app](https://kramik-portfolio.vercel.app/)
 
 ---
 
